@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hello, World</title>
+       <style>
+
+body {
+	background:url("film1.jpg");
+    font: 18px/30px helvetica, sans-serif;
+    color:white;
+}
+
+span {
+    background: #ff9;
+}
+
+</style>
+    </head>
+   <body>
+    <p id="hello"><span id="movie" data-prompt="movie">________________________</span> is a <span id="year" data-prompt="year">
+    _____</span> British-American <span id="genre" data-prompt="genre">________</span> film and an
+     adaptation of the 1853 memoir Twelve Years a Slave by Solomon Northup, a New York State-born 
+     free African American man who was kidnapped in Washington, D.C., in 1841 and sold into slavery. 
+     He worked on plantations in the state of Louisiana for twelve years before his release. 
+     The first scholarly edition of Northup's memoir, co-edited in 1968 by Sue Eakin and Joseph 
+     Logsdon, carefully retraced and validated the account and concluded it to be accurate.</p>
+     
+     <p>This is the third feature film directed by <span id="name" data-prompt="name">__________</span>. The screenplay was written by 
+     John Ridley. <span id="actor#1" data-prompt="actor#1">_________</span> stars as Solomon Northup. Michael Fassbender, Benedict Cumberbatch, 
+     Paul Dano, Paul Giamatti, Lupita Nyong'o, Sarah Paulson, Brad Pitt and Alfre Woodard are all 
+     featured in supporting roles. Principal photography took place in <span id="city-state" data-prompt="city-state">
+     __________</span>from 
+     June 27 to August 13, 2012. The locations used were four historic antebellum plantations: 
+     Felicity, Magnolia, Bocage, and Destrehan. Of the four, Magnolia is nearest to the actual plantation 
+     where Northup was held.</p>
+     
+     <p>12 Years a Slave received wide critical acclaim, and was named the best film of the year by 
+     several media outlets. It also proved to be a box office success, earning over $140 million on 
+     a production budget of $20 million. The film won <span id ="number" data-prompt="number">_________</span> 
+     <span id="category1" data-prompt="category1">____________</span>, 
+     <span id="category2" data-prompt="category2">_____________</span> for Nyong'o and <span id="category3" data-prompt="category3">_____________</span> for Ridley. It was awarded 
+     the Golden Globe Award for 
+     Best Motion Picture – Drama, and the British Academy of Film and Television Arts recognized the film 
+     with the Best Film and the Best Actor award for Ejiofor.</p>
+ <script>
+ var placeholders = [
+            'movie',
+            'year',
+            'genre',
+            'name',
+            'actor#1',
+            'city-state',
+            'number',
+            'category1',
+            'category2',
+            'category3'
+        ];
+
+          for (var i = 0; i < placeholders.length; i++) {
+            var id = placeholders[i];
+            var span = document.getElementById(id);
+            span.addEventListener('click', replaceWord, false);
+            }
+
+			function replaceWord(e){
+			var span = e.target;
+			var wordPrompt = span.getAttribute('data-prompt');
+                var word = prompt('Please enter a ' + span.innerHTML);
+                if(word!==null){
+                span.innerHTML = word;
+            }
+        }
+
+/*document.getElementById('movie').innerHTML  = prompt('[1/10] Enter a movie');
+document.getElementById('year').innerHTML  = prompt('[2/10] Enter a year');
+document.getElementById('genre').innerHTML  = prompt('[3/10] Enter a genre');
+document.getElementById('name').innerHTML = prompt('[4/10] Enter a name');
+document.getElementById('actor#1').innerHTML = prompt('[5/10] Enter a actor#1');
+document.getElementById('city-state').innerHTML    = prompt('[6/10] Enter a city-state');
+document.getElementById('number').innerHTML   = prompt('[7/10] Enter a number');
+document.getElementById('category1').innerHTML   = prompt('[8/10] Enter a category1');
+document.getElementById('category2').innerHTML   = prompt('[9/10] Enter a category2');
+document.getElementById('category3').innerHTML   = prompt('[10/10] Enter a category3');
+*/
+</script>
+</body>
+</html>

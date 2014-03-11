@@ -7,16 +7,22 @@
 body {
 	background:url("Movie-theater.jpg");
     font: 18px/30px helvetica, sans-serif;
-    opacity:.50;
 }
 
 span {
     background: #ff9;
 }
-
+#content{
+background:white;
+margin-left:200px;
+margin-right:200px;
+padding:5px;
+text-align:justified;
+}
 </style>
     </head>
    <body>
+   <div id="content">
     <p id="hello"><span id="movie">(movie)</span> is a <span id="year">(year)</span> British-American <span id="genre">(genre)</span> film and an
      adaptation of the 1853 memoir Twelve Years a Slave by Solomon Northup, a New York State-born 
      free African American man who was kidnapped in Washington, D.C., in 1841 and sold into slavery. 
@@ -39,6 +45,7 @@ span {
      the Golden Globe Award for 
      Best Motion Picture – Drama, and the British Academy of Film and Television Arts recognized the film 
      with the Best Film and the Best Actor award for Ejiofor.</p>
+     </div>
  <script>
 
 document.getElementById('movie').innerHTML  = prompt('[1/10] Enter a movie');

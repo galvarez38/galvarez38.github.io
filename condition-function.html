@@ -10,6 +10,14 @@ body {
     font: 18px/30px helvetica, sans-serif;
     color:black;
 }
+#content{
+background:white;
+margin-left:200px;
+margin-right:200px;
+padding:5px;
+text-align:justified;
+color:black;
+}
 
 span {
     background: #ff9;
@@ -17,7 +25,7 @@ span {
 
 </style>
     </head>
-   <body>
+   <body><div id="content">
     <p id="hello"><span id="movie" data-prompt="movie">________________________</span> is a <span id="year" data-prompt="year">
     _____</span> British-American <span id="genre" data-prompt="genre">________</span> film and an
      adaptation of the 1853 memoir Twelve Years a Slave by Solomon Northup, a New York State-born 
@@ -83,6 +91,6 @@ document.getElementById('category1').innerHTML   = prompt('[8/10] Enter a catego
 document.getElementById('category2').innerHTML   = prompt('[9/10] Enter a category2');
 document.getElementById('category3').innerHTML   = prompt('[10/10] Enter a category3');
 */
-</script>
+</script></div>
 </body>
 </html>

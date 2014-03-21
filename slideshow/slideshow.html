@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Slideshow</title>
+        <style>
+       body{
+        background:url('slideshow.jpg');
+        }
+        #image{
+        float:right;
+        }
+        h1{
+        margin:15px;
+        background:black;
+        color:gold;
+        font-family:"Edwardian Script ITC";
+        font-size:4em;
+        width:450px;
+        border-radius:20px;
+        }
+        
+        </style>
+    </head>
+    <body>
+    <h1>Slideshows of Photos</h1>
+        <img id="image" src="images/1.jpg" alt="">
+        <script src="jquery-1.11.0.js"></script>
+        <script>
+        
+        var position = 1;
+        var maxPosition = 5;
+        
+        function nextImage() {
+            position++;
+            if (position > maxPosition) {
+                position = 1;
+            }
+            $('#image').fadeOut(250, function() {
+                $('#image').attr('src', 'images/' + position + '.jpg');
+                $('#image').fadeIn(250);
+            });
+        }
+        
+        $('#image').click(nextImage);
+        
+        </script>
+    </body>
+</html>

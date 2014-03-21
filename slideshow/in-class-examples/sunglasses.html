@@ -1,0 +1,17 @@
+<html>
+    <img id="nyan" src="nyan.gif" alt="nyan cat">
+    <script src="jquery-1.11.0.js"></script>
+    <script>
+    
+    var img = $('#nyan');
+    img.click(function() {
+        console.log($(this).attr('alt'));
+        if ($(this).attr('src') === 'nyan.gif') {
+            $(this).attr('src', 'sunglasses.gif');
+        } else {
+            $(this).attr('src', 'nyan.gif');
+        }
+    });
+ 
+    </script>
+</html>

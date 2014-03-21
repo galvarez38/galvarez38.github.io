@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Nyan</title>
+    </head>
+    <body>
+        <img id="nyan" src="nyan.gif" alt="nyan cat">
+        <script src="jquery-1.11.0.js"></script>
+        <script>
+    
+        var img = $('#nyan');
+        var sunglasses = false;
+        img.click(function() {
+            sunglasses = !sunglasses;
+            if (sunglasses) {
+                this.src = 'sunglasses.gif';
+            } else {
+                this.src = 'nyan.gif';
+            }
+        });
+ 
+        </script>
+    </body>
+</html>

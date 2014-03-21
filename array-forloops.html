@@ -10,7 +10,14 @@ body {
     font: 18px/30px helvetica, sans-serif;
     opacity:.50;
 }
-
+#content{
+background:white;
+margin-left:200px;
+margin-right:200px;
+padding:5px;
+text-align:justified;
+color:black;
+}
 span {
     background: #ff9;
 }
@@ -18,6 +25,7 @@ span {
 </style>
     </head>
    <body>
+   <div id="content">
     <p id="hello"><span id="movie" data-prompt="movie">________________________</span> is a <span id="year" data-prompt="year">
     _____</span> British-American <span id="genre" data-prompt="genre">________</span> film and an
      adaptation of the 1853 memoir Twelve Years a Slave by Solomon Northup, a New York State-born 
@@ -34,7 +42,7 @@ span {
      June 27 to August 13, 2012. The locations used were four historic antebellum plantations: 
      Felicity, Magnolia, Bocage, and Destrehan. Of the four, Magnolia is nearest to the actual plantation 
      where Northup was held.</p>
-     
+    
      <p>12 Years a Slave received wide critical acclaim, and was named the best film of the year by 
      several media outlets. It also proved to be a box office success, earning over $140 million on 
      a production budget of $20 million. The film won <span id ="number" data-prompt="number">_________</span> 
@@ -44,7 +52,7 @@ span {
      Best Motion Picture – Drama, and the British Academy of Film and Television Arts recognized the film 
      with the Best Film and the Best Actor award for Ejiofor.</p>
  <script>
- var placeholders = [
+ var placeholders = [ 
             'movie',
             'year',
             'genre',
@@ -84,5 +92,6 @@ document.getElementById('category2').innerHTML   = prompt('[9/10] Enter a catego
 document.getElementById('category3').innerHTML   = prompt('[10/10] Enter a category3');
 */
 </script>
+</div>
 </body>
-</html>
+</html> 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BMW E30 Slideshow</title>
+        <style>
+        body {
+          margin: 0;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="photo"></div>
+        <script src="jquery-1.11.0.js"></script>
+        <script src="flickr.js"></script>
+        <script>
+        
+        var flickr = new Flickr('8e293eb5bc01282cc363187cfb4c954a');
+        flickr.photos.search({
+          text: "BMW -E30 -parts -logo",
+          extras: "o_dims"
+        }, function(rx) {
+          var images = rx.photos.photo;
+          var num = 0;
+          var max = images.length - 1;
+          console.log(images[num]);
+          $('#photo').html('<img src="' + images[num].src('b') + '">');
+          resizeImage();
+          
+          $('#photo').click(function() {
+           $('#photo').fadeOut(500, function() {
+              num++;
+              if (num > max) {
+                num = 0;
+              }
+              $('#photo').html('<img src="' + images[num].src('b') + '">');
+              resizeImage();
+              $('#photo').fadeIn(500);
+             
+              
+           });
+             
+             var image = images[num];
+             ;
+             
+             resizeImage();
+             
+          
+          });
+          
+          function resizeImage() {
+              var image = images[num];
+              var ratio = image.o_width / image.o_height;
+              var width = $(window).width();
+              var height = width / ratio;
+              $('#photo > img').css('width', width);
+              $('#photo > img').css('height', height);
+          }
+          
+          $(window).resize(resizeImage);
+        })
+        
+        </script>
+    </body>
+</html>

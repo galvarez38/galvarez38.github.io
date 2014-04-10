@@ -16,7 +16,7 @@
 </head>
     <body>
     <h1>Slideshows of Photos</h1>
-        <div id="photo"></div>
+        <div id="images"></div>
         <script src="jquery-1.11.0.js"></script>
         <script src="flickr.js"></script>
         <script>
@@ -29,18 +29,18 @@
           var num = 0;
           var max = images.length - 1;
           console.log(images[num]);
-          $('#photo').html('<img src="' + images[num].src('b') + '">');
+          $('#images').html('<img src="' + images[num].src('b') + '">');
           resizeImage();
           
-          $('#photo').click(function() {
-           $('#photo').fadeOut(500, function() {
+          $('#images').click(function() {
+           $('#images').fadeOut(500, function() {
               num++;
               if (num > max) {
                 num = 0;
               }
-              $('#photo').html('<img src="' + images[num].src('b') + '">');
+              $('#images').html('<img src="' + images[num].src('b') + '">');
               resizeImage();
-              $('#photo').fadeIn(500);
+              $('#images').fadeIn(500);
              
               
            });
@@ -58,8 +58,8 @@
               var ratio = image.o_width / image.o_height;
               var width = $(window).width();
               var height = width / ratio;
-              $('#photo > img').css('width', width);
-              $('#photo > img').css('height', height);
+              $('#images > img').css('width', width);
+              $('#images > img').css('height', height);
           }
           
           $(window).resize(resizeImage);

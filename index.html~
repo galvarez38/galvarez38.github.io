@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Galvarez38</title>
+    <style>
+	html{
+		background:url(pattern-6mp1.png);
+	}
+
+    body {
+        font: 14px helvetica, sans-serif;
+    }
+	#content{
+		background-color:white;
+		margin-top:300px;
+		width:450px;
+		padding:10px;
+		line-height:1.667em;
+		text-align:justify;
+		moz-border-radius:25px;
+		border-radius:25px;
+		opacity:.75;
+	}
+	#title{
+	width:500px;
+	}
+	
+	h1{
+		font-family:"Lucida Console", Monaco, monospace;
+	}
+	h2{
+		font-family:"Lucida Console", Monaco, monospace;
+	}
+    p{
+    width:400px;
+	}
+	img{
+		float:left;
+		padding:10px;
+	}
+	li{
+	list-style-type:none;
+	}
+	li a{
+	color:black;
+	}
+	
+	li a:hover{
+	color:red;
+	}
+	
+	li a{
+	text-decoration:none;
+	}
+    </style>
+  </head>
+  <body>
+    
+    
+    <div id="content">
+    <h1>Gabriel Alvarez</h1>
+        <a href="https://github.com/galvarez38">
+            <img src="https://github.com/galvarez38.png" width="80" height="80" alt="My GitHub account">
+        </a>
+<p>
+
+       My name is Gabriel. I was born I live in Staten Island one of the five boroughs of New York City. Before starting into the digital designs, started drawing at the age of 12, then I preceded to draw in studio designs through high school.  This is my senior year at City College. However before, 
+       I was a transfer student at Borough of Manhattan Community College (BMCC) (CUNY). I am currently majoring in 
+       Studio Arts.  I have actually have learned to create a website from the two previous web design classes before.
+       We studied briefly on javascripts and very little of jQuery, but mainly to design a website through CSS.</p>
+   <div id "title"><img src="City.jpg"> </div>    
+  <h2>Objectives</h2>
+    <p>My objectives of taking Web programming because I want to learn basic syntax through 
+    studying events and actions of the script that effects the web pages designed. </p>  
+    
+    <h2>Assignments</h2>
+    <li><a href="https://galvarez38.github.io">Introduction</a></li>
+    <li><a href="https://galvarez38.github.io/mad-lib.html">Mad-Libs</a></li>   
+ 	<li><a href="https://galvarez38.github.io/array-forloops.html">Arrays</a></li>
+  	<li><a href="https://galvarez38.github.io/condition-function.html">Conditional and Functions</a></li>
+  	<li><a href="https://galvarez38.github.io/slideshow/slideshow.html">week 6</a></li>
+  	<li><a href="https://galvarez38.github.io/slideshow/midterm.html">Midterm</a></li>
+  	<li><a href="https://galvarez38.github.io/slideshow/midterm.html">Midterm(part2)</a></li>
+  	</div>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Untitled Document</title>
+<script src="jQuery-latest.js" type="text/javascript"></script>
+<script src="htmapl-standalone.js" type="text/javascript">
+</script>
+<style>
+@import url(screen.css);
+h1{
+	color:red;
+}
+.map {
+                float: left;
+                width:1200px;
+                height:800px;
+                background-color:#09F;
+                margin: 0;
+				border:5px solid red;
+				
+            }
+div.map .controls button {
+	margin: 0px; 
+	border: 1px solid rgba(255, 255, 255, 0.3); 
+	color: white; 
+	line-height: 1.5em; 
+	font-weight: bold; 
+	cursor: pointer; 
+	background-color: red;
+}
+
+</style>
+</head>
+
+<body>
+<h1>Maps</h1>
+<div class="clearfix" id="map"></div>
+<DIV class="map" data-provider="toner" data-hash="true"></DIV>
+<DIV class="controls" id="controls"><BUTTON data-action="zoomIn">+</BUTTON>      
+       <BUTTON data-action="zoomOut">&#8722;</BUTTON>         </DIV>
+<SCRIPT defer type="text/javascript">
+        var maps;
+        $(function() {
+
+            // grab the controls div and remove it from the DOM
+            var controls = $("#controls").remove();
+
+            maps = $(".map");
+            // append a cloned controls div onto each map element
+            maps.each(function() {
+                $(this).append(controls.clone());
+            });
+
+            // make some maps with the following option defaults:
+            maps.htmapl({
+                zoom: 5, // note: some of these tiles don't go > 6
+                mousewheel: false // the document may scroll
+            });
+
+            // copy the extent of the first one to all others
+            // (so that the hash gets applied)
+            maps.slice(1).extent(maps.first().extent());
+
+            // parse out the provider ids from each map (and layer),
+            // and create a label listing them on top
+            maps.each(function() {
+                var div = $(this),
+                    label = $("<span class='label'>"),
+                    layers = div.children(".layer"),
+                    providers = [];
+                if (layers.length > 0) {
+                    providers = layers.map(function(i) {
+                        return [i + 1, $(this).data("provider")].join(". ");
+                    }).toArray();
+                } else {
+                    providers = [div.data("provider")];
+                }
+                label.html(providers.join("<br>"));
+                div.append(label);
+            });
+
+            // pan other maps when any is panned
+            var panning = false;
+            maps.bind("map.panned", function(e, data) {
+                if (!panning) {
+                    panning = true;
+                    maps.not(this).htmapl("setCenter", data.center);
+                    panning = false;
+                }
+            });
+
+            // zoom other maps when any is zoomed
+            var zooming = false;
+            maps.bind("map.zoomed", function(e, data) {
+                if (!zooming) {
+                    zooming = true;
+                    maps.not(this).htmapl("setZoom", data.zoom);
+                    zooming = false;
+                }
+            });
+
+        });
+        </SCRIPT>
+</body>
+</html>

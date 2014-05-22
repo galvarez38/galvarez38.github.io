@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Marker Tooltips with Image Slideshow</title>
+
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; height:600px; }
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<style>
+.popup {
+    text-align: center;
+	background-color:#000;
+	color:#FFF;
+}
+.popup .slideshow {
+    width: 100%;
+	background-color:#333;
+}
+.popup .slideshow .image {
+    display: none;
+	border:solid #eee;
+}
+.popup .slideshow .active {
+    display: block;
+}
+.popup .slideshow img {
+    width: 50%;
+}
+.popup .slideshow .caption {
+    background:#666;
+    padding: 8px;
+}
+.popup .cycle {
+    height: 30px;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+.popup .cycle a.prev {
+    float: left;
+}
+.popup .cycle a.prev:hover {
+    float: left;
+	color:red;
+}
+.popup .cycle a.next {
+    float: right;
+}
+.popup .cycle a.next:hover {
+    float: right;
+	color:red;
+}
+
+</style>
+
+<div id='map'></div>
+<iframe width='100%' height='600px' frameBorder='0' src='http://a.tiles.mapbox.com/v3/gabemap.i9nl3cca/attribution,zoompan,zoomwheel,geocoder,share.html'></iframe>
+<script>
+var map = L.mapbox.map('map', 'example.map-i875kd35').setView([0, 0],2)
+
+.addControl(L.mapbox.geocoderControl('example.map-i875kd35'));
+L.control.layers({
+    'Air Flights': L.mapbox.tileLayer('gabemap.i9i286lp').addTo(map),
+    'Clean': L.mapbox.tileLayer('gabemap.i6n6omba'),
+	'Red':L.mapbox.tileLayer('gabemap.i6n6dbp2'),
+	'Orange': L.mapbox.tileLayer('gabemap.i9nl3cca'),
+	'Terrains':L.mapbox.tileLayer('gabemap.iadkjk2j'),
+	'Blank Map':L.mapbox.tileLayer('gabemap.i6o791ek'),
+	
+}).addTo(map);
+
+map.featureLayer.on('ready', function(e) {
+    var markers = [];
+    this.eachLayer(function(marker) { markers.push(marker); });
+    cycle(markers);
+});
+
+function cycle(markers) {
+    var i = 0;
+    function run() {
+        if (++i > markers.length - 1) i = 0;
+        map.setView(markers[i].getLatLng(), 12);
+        markers[i].openPopup();
+        window.setTimeout(run, 3000);
+    }
+    run();
+} 
+
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+
+var geoJson = [{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-77.03, 38.90]},
+    "properties": {
+        'title': 'Washington, D.C.',
+		'marker-color':'#FF0000',
+
+        // Store the image url and caption in an array
+        'images': [['Washington/United_States_Capitol.jpg','<strong>The United States Congress </strong>has ultimate authority over the District.'],
+		['Washington/DC-image.jpg','Washington D.C. is the capital of the United States'],['Washington/SmithsonianCastel_07120014.jpg','The Smithsonian Institution operates 19 museums and the National Zoo, all free to the public.'],['Washington/Washington_Monument_Dusk_Jan_2006.jpg','Has been the tallest structure in the District of Columbia since 1884. Stood as the tallest structure in the world from 1884 until 1889, and as the tallest monument in the U.S. until the completion of the San Jacinto Monument in 1939; now stands as the country s third-tallest monument.'],]
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-74.00, 40.71]},
+    "properties": {
+        'title': 'New York City',
+		'marker-color':'#FF0000',
+        'images': [['New_York/Freedom_Towers.jpg','Freedom Tower is a former name of One World Trade Center, a building under construction in New York City. When completed it will be the third tallest building in the world, measuring 1,776 feet high.'],
+		['New_York/Central_Park.jpg','Central Park is an urban park in Manhattan in New York City. The park was initially opened in 1857, on 778 acres (315 ha) of city-owned land (it is 843 acres today).'],
+		['New_York/Flushing-Meadows_Park.jpg','Flushing-Meadows park is the fourth largest public park in the city of New York (see List of New York City parks), it was created as the site of the 1939/1940 New York Worlds Fair and also hosted the 1964/1965 New York Worlds Fair.'],
+		['New_York/270px-Beekman_Tower_fr_BB_jeh.jpg','Also known as Beekman Tower and New York by Gehry; tallest all-residential building in New York City and the western hemisphere'],
+		['New_York/Bank of America-Building.jpg','29th-tallest building in the world, 5th-tallest in the United States; first skyscraper to receive a Platinum LEED certification'],
+		['New_York/Chrysler_Building.jpg','57th-tallest building in the world, 7th-tallest in the United States; first building in the world to rise higher than 1,000 feet (305 m); stood as the tallest building in the world from 1930 until 1931; tallest steel-framed brick building in the world'],
+		['New_York/Empire_State_Building.jpg','23rd-tallest building in the world, 4th-tallest in the United States; first building in the world to contain over 100 floors. Built in just 14 months during the Great Depression, it was the tallest building in the world from its completion in 1931 until the World Trade Center was completed in 1972, and was again New York City s tallest building from 2001 until 2013 after the World Trade Center was destroyed in the terrorist attacks of September 11, 2001.'],
+		['New_York/Metropolitan_Opera_House_At_Lincoln_Center.jpg','The Metropolitan Opera (the "Met") is an opera company based in New York City, resident at the Metropolitan Opera House, located at the Lincoln Center for the Performing Arts.'],
+		['New_York/Nytimes_building_rear.jpg','57th-tallest building in the world, 7th-tallest in the United States; also known as the Times Tower']]
+
+    }
+},
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-87.62, 41.87]},
+    "properties": {
+        'title': 'Chicago',
+		'marker-color':'#FF0000',
+        // Store the image url and caption in an array
+        'images': [['Chicago/Radisson Blu Aqua-Hotel.jpg','An architectural marvel, the Radisson Blu Aqua Hotel Chicago was designed by the acclaimed Jeanne Gang of Studio Gang Architects and was the first Radisson Blu in the United States, setting a new standard for upper-upscale hotels in Chicago.'],
+		['Chicago/Sears_Tower_ss.jpg','Willis Towers formerly known as Sears Tower; second tallest building in the United States, 9th-tallest building in the world; tallest building in the world from 1974 until 1998; tallest building completed in the world in the 1970s']]
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-122.40, 37.77]},
+    "properties": {
+        'title': 'San Francisco',
+		'marker-color':'#FF0000',
+        'images': [['San Francisco/san-francisco.jpg','San Francisco (Spanish for "Saint Francis") was founded on June 29, 1776, when colonists from Spain established a fort at the Golden Gate and a mission named for St. Francis of Assisi a few miles away.'],['San Francisco/SF_Chinatown_CA.jpg','San Francisco s Chinatown is the oldest and one of the largest in North America.'],['San Francisco/SF_Transamerica_full_CA.jpg','The Transamerica Pyramid is the tallest building in San Francisco']]
+
+    }
+},
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-118.24, 34.046]},
+    "properties": {
+        'title': 'Los Angeles',
+		'marker-color':'#FF0000',
+        'images': [['Los Angeles/Hollywood.jpg','Nicknamed the City of Angels, Los Angeles is a global city, with strengths in business, international trade, entertainment, culture, media, fashion, science, sports, technology, education, medicine and research and has been ranked sixth in the Global Cities Index and 9th Global Economic Power Index. '],['Los Angeles/LA-Panorama.jpg','Panorama of Los Angeles as viewed from Mulholland Drive. Left to right: Santa Ana Mountains, downtown, Hollywood (foreground), Wilshire Boulevard, Port of Los Angeles, Palos Verdes Peninsula, Santa Catalina Island, and Los Angeles International Airport.'],['Los Angeles/Angels_Flight_East.jpg','is a landmark, 2 ft 6 in (762 mm) narrow gauge[3] funicular railway in the Bunker Hill district of Downtown Los Angeles, California. It has two funicular cars: Sinai and Olivet.'],['Los Angeles/Union_Station.jpg','Los Angeles Union Station (or LAUS) is the main railway station in Los Angeles, California and the largest railroad passenger terminal in the Western United States.It opened in May 1939 as the Los Angeles Union Passenger Terminal, replacing the older La Grande Station and Central Station.'],['Los Angeles/Universal_Studios.jpg','Universal Studios Hollywood is a movie studio and theme park in the unincorporated Universal City community of Los Angeles County, California, United States. It is one of the oldest and most famous Hollywood movie studios still in use.'],]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [116.4, 39.9]},
+    "properties": {
+        'title': 'Beijing',
+		'marker-color':'#FF0000',
+        'images': [['Beijing/Beijing_National_Stadium.jpg',' Beijing National Stadium is a stadium in Beijing, China. The stadium was designed for use throughout the 2008 Summer Olympics and Paralympics.'],['Beijing/National_Grand_Theatre.jpg','National Grand Theater is the Centre, an ellipsoid dome of titanium and glass surrounded by an artificial lake, seats 5,452 people in three halls and is almost 12,000 m² in size. It was designed by French architect Paul Andreu. Construction started in December 2001 and the inaugural concert was held in December 2007.'],['Beijing/SA_Temple_of_Heaven.jpg','Temple of Heaven is a complex of religious buildings situated in the southeastern part of central Beijing. The complex was visited by the Emperors of the Ming and Qing dynasties for annual ceremonies of prayer to Heaven for good harvest. It has been regarded as a Taoist temple, although Chinese heaven worship, especially by the reigning monarch of the day, pre-dates Taoism.'],['Beijing/Tiananmen_Gate_--_the_Gate_of_Heavenly_Peace,_the_most_famous_part_of_the_Forbidden_City._Complete_with_portrait_of_Chairman_Mao_and_appropriate_propaganda.jpg','Tiananmen Gates is a famous monument in Beijing, the capital of the Peoples Republic of China. It is widely used as a national symbol. First built during the Ming Dynasty in 1420, Tiananmen is often referred to as the front entrance to the Forbidden City.']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [31, 30]},
+    "properties": {
+        'title': 'Cairo',
+		'marker-color':'#FF0000',
+        'images': [['Cairo/Cairo_Nile_River.jpg','The river Nile flows through Cairo, here contrasting ancient customs of daily life with the modern city of today'],['Cairo/Cairo_Tower_by_day.jpg','The Cairo Tower (Arabic: برج القاهرة‎, Borg Al-Qāhira) is a free-standing concrete tower located in Cairo, Egypt. At 187 m (614 ft), it has been the tallest structure in Egypt and North Africa about 50 years. It was the tallest structure in Africa for 10 years, until 1971 when it was surpassed by Hillbrow Tower in South Africa.'],['Cairo/Egypt.Giza.Sphinx.02.jpg','he Great Sphinx of Giza (Arabic: أبو الهول‎ Abū al-Haul, English: The Terrifying One; literally: Father of dread), commonly referred to as the Sphinx, is a limestone statue of a reclining or couchant sphinx (a mythical creature with a lions body and a human head) that stands on the Giza Plateau on the west bank of the Nile in Giza, Egypt. The face of the Sphinx is generally believed to represent the face of the Pharaoh Khafra.'],['Cairo/Zamalek_Arial.jpg','Zamalek (Egyptian Arabic: الزمالك pronounced [ez.zæˈmæːlek]) is an affluent district of western Cairo encompassing the northern portion of Gezira Island in the Nile River. The island is connected with the river banks through three bridges each on the east and west sides of the island, including the Qasr al-Nil Bridge and 6th October Bridge.']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-0.12, 51.5]},
+    "properties": {
+        'title': 'London',
+		'marker-color':'#FF0000',
+        'images': [['London/63950-640x360-london-icons2-640.jpg','Big Ben is the nickname of the clock tower at the north end of the Palace of Westminster in London, named after the great bell within the clock.'],['London/dynamo_1751044a.jpg','London is a popular centre for tourism, one of its prime industries, employing the equivalent of 350,000 full-time workers in 2003, while annual expenditure by tourists is around £15 billion.[189] London attracts over 14 million international visitors per year, making it Europes most visited city.'],['London/tn_siemens-london-inspiro-mockup-9.jpg','The London Underground — all of which is now commonly referred to as the Tube, though originally this designation referred only to the deep-level lines, as distinct from the sub-surface lines — is the oldest,and second longest metro system in the world, dating from 1863. ']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [2.32, 48.8]},
+    "properties": {
+        'title': 'Paris',
+		'marker-color':'#FF0000',
+        'images': [['Paris/680x250_paris2.jpg','The Louvre Pyramid (Pyramide du Louvre) is a large glass and metal pyramid, surrounded by three smaller pyramids, in the main courtyard (Cour Napoléon) of the Louvre Palace (Palais du Louvre) in Paris. The large pyramid serves as the main entrance to the Louvre Museum. Completed in 1989,[1] it has become a landmark of the city of Paris.'],['Paris/354851-admin.jpg','The Arc de Triomphe de l Étoile[needs IPA] is one of the most famous monuments in Paris. It stands in the centre of the Place Charles de Gaulle (originally named Place de l Étoile), at the western end of the Champs-Élysées.'],['Paris/Eiffel-Tower-Paris-France.jpg','The tower is the tallest structure in Paris and the most-visited paid monument in the world; 6.98 million people ascended it in 2011. The tower received its 250 millionth visitor in 2010.'],['Paris/Vincennes_-_Chateau_02.jpg','The Château de Vincennes is a massive 14th and 17th century French royal castle in the town of Vincennes, to the east of Paris, now a suburb of the metropolis.']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [12.4, 41.8]},
+    "properties": {
+        'title': 'Rome',
+		'marker-color':'#FF0000',
+        'images': [['Rome/Piazza_della_repubblica_hdr.jpg','Piazza della Repubblica is a semi-circular piazza in Rome, at the summit of the Viminal Hill, next to the Termini station. On it is to be found Santa Maria degli Angeli e dei Martiri. It is served by the Repubblica - Teatro dell Opera Metro station. '],['Rome/Roma_(dallaereo).jpg','Rome is the capital of Italy'],['Rome/RomaCastelSantAngelo.jpg','The Mausoleum of Hadrian, usually known as Castel Sant Angelo (English: Castle of the Holy Angel), is a towering cylindrical building in Parco Adriano, Rome, Italy. It was initially commissioned by the Roman Emperor Hadrian as a mausoleum for himself and his family. The building was later used by the popes as a fortress and castle, and is now a museum. The Castel was once the tallest building in Rome.'],['Rome/Rome.jpg','Rome s architecture over the centuries has greatly developed, especially from the Classical and Imperial Roman styles to modern Fascist architecture. Rome was for a period one of the world s main epicentres of classical architecture, developing new forms such as the arch, the dome and the vault.']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-43.1, -22.9]},
+    "properties": {
+        'title': 'Rio de Janeiro',
+		'marker-color':'#FF0000',
+        'images': [['Rio de Janeiro/1_rocinha_favela_panorama_2010.jpg','Rocinha is the largest hill favela in Rio de Janeiro. Although favelas are found in urban areas throughout Brazil, many of the more famous ones exist in Rio – a widely photographed city'], ['Rio de Janeiro/Enseada_de_Botafogo_e_Pão_de_Açúcar.jpg','Sugarloaf Mountain (Portuguese: Pão de Açúcar) is a peak situated in Rio de Janeiro, Brazil, at the mouth of Guanabara Bay on a peninsula that sticks out into the Atlantic Ocean. Rising 396 metres (1,299 ft) above the harbor, its name is said to refer to its resemblance to the traditional shape of concentrated refined loaf sugar.'],['Rio de Janeiro/Monumento_ao_Cristo_Redentor.jpg','Christ the Redeemer is a statue of Jesus Christ in Rio de Janeiro, Brazil and was considered the largest Art Deco statue in the world from 1931 until 2010 when it was topped by the Christ the King statue in Poland.']]
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [151.2, -33.9]},
+    "properties": {
+        'title': 'Sydney',
+		'marker-color':'#FF0000',
+        'images': [['Sydney/City_of_sydney_from_the_balmain_wharf_dusk_cropped2.jpg','Balmain ferry wharf (also known as Thames Street ferry wharf) is a commuter wharf serving the suburb of Balmain in Sydney, Australia. It serves the Woolwich/Balmain Ferry route where services proceed to Woolwich wharf. Services operate between here and Circular Quay.'],['Sydney/QantasSYD.jpg','Sydney Airport is an international airport located 8 km (5 mi) south of the city centre, in the suburb of Mascot in Sydney, New South Wales. It is the only major airport serving Sydney, and is a primary hub for Qantas, as well as a secondary hub for Virgin Australia and Jetstar Airways. '],['Sydney/Sydney_Harbour01.jpg','The Sydney Opera House is a multi-venue performing arts centre in Sydney, New South Wales, Australia. Situated on Bennelong Point in Sydney Harbour, close to the Sydney Harbour Bridge, the facility is adjacent to the Sydney central business district and the Royal Botanic Gardens, between Sydney and Farm Coves.']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [77.1, 28.6]},
+    "properties": {
+        'title': 'New Delhi',
+		'marker-color':'#FF0000',
+        'images': [['India/india-09.jpg','The Taj Mahal is a white marble mausoleum located in Agra, Uttar Pradesh, India. It was built by Mughal emperor Shah Jahan in memory of his third wife, Mumtaz Mahal. The Taj Mahal is widely recognized as "the jewel of Muslim art in India and one of the universally admired masterpieces of the world s heritage".'],['India/KedarRange.jpg','The <strong>Himalayas </strong>is a mountain range in Asia separating the plains of the Indian subcontinent from the Tibetan Plateau.'],['India/LotusDelhi.jpg','The Lotus Temple, located in New Delhi, India, is a Bahá í House of Worship completed in 1986. Notable for its flowerlike shape, it serves as the Mother Temple of the Indian subcontinent and has become a prominent attraction in the city.']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [103.8, 1.2]},
+    "properties": {
+        'title': 'Singapore',
+		'marker-color':'#FF0000',
+        'images': [['Singapore/Singapore_CBD_skyline_from_Esplanade_at_dusk.jpg','Republic of Singapore, is a sovereign city-state and island country in Southeast Asia. It lies off the southern tip of the Malay Peninsula and is 137 kilometres (85 mi) north of the equator. ']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [55, 25]},
+    "properties": {
+        'title': 'Dubai',
+		'marker-color':'#FF0000',
+        'images': [['Dubai/Burj_Khalifa_005.jpg','Burj Dubai prior to its inauguration, is a skyscraper in Dubai, United Arab Emirates, and is the tallest man-made structure in the world, at 829.8 m (2,722 ft).']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [54, 24]},
+    "properties": {
+        'title': 'Abu Dhabi',
+		'marker-color':'#FF0000',
+        'images': [['Abu Dhabi/Abu_Dhabi_Skyline_fron_Corniche_Rd.jpg','Abu Dhabi is the capital and the second most populous city in the United Arab Emirates and also capital of the largest of the UAE s seven member emirates. Abu Dhabi lies on a T-shaped island jutting into the Persian Gulf from the central western coast. ']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [35, 32]},
+    "properties": {
+        'title': 'Jerusalem',
+		'marker-color':'#FF0000',
+        'images': [['Jerusalem/Dome_of_the_Rock_viewed_through_Bab_al-Qattanin.jpg','Contemporary Arabic and Hebrew sources say the site was full of rubbish, and that Arabs and Jews cleaned it.The Umayyad caliph Abd al-Malik commissioned the construction of the Dome of the Rock in the late 7th century.']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [35, 32]},
+    "properties": {
+        'title': 'Tel Aviv',
+		'marker-color':'#FF0000',
+        'images': [['Tel Aviv/PikiWiki_Israel_20386_Cities_in_Israel.jpg','Tel Aviv (Hebrew: תֵּל־אָבִיב; Arabic: تل أبيب‎) is the second most populous city in Israel and the largest metropolitan area, with a population of 414,600 and 3,464,100 respectively.It is located on the Mediterranean coast in central-west Israel, within Gush Dan, Israel s largest metropolitan area, containing 42% of Israel s population.']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [24, 38]},
+    "properties": {
+        'title': 'Athens',
+		'marker-color':'#FF0000',
+        'images': [['Athens/Acropilos_wide_view.jpg','The Acropolis of Athens is an ancient citadel located on a high rocky outcrop above the city of Athens and containing the remains of several ancient buildings of great architectural and historic significance, the most famous being the Parthenon.' ],['Athens/Hellenic_Parliament_from_high_above.jpg','<em>Helenic Parliament</em> is the Parliament of Greece, located in the Old Royal Palace, overlooking Syntagma Square in Athens, Greece. The Parliament is the supreme democratic institution that represents the citizens through an elected body of Members of Parliament ']]
+
+    }
+}, 
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-156, 20]},
+    "properties": {
+        'title': 'Honolulu',
+		'marker-color':'#FF0000',
+        'images': [['Hawaii/Honolulu01.jpg','Honolulu is state capital of Hawaii'],['Hawaii/Kauai04.jpg','Nā Pali coast, Kauaʻi']]
+
+    }
+},
+{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [37.6, 55.7]},
+    "properties": {
+        'title': 'Moscow',
+		'marker-color':'#FF0000',
+        'images': [['Moscow/Moscow.jpg','The Cathedral of Vasily the Blessed, commonly known as Saint Basil s Cathedral, is a former church in Red Square in Moscow, Russia. The building, now a museum, is officially known as the Cathedral of the Intercession of the Blessed Virgin on the Moat or Pokrovsky Cathedral. It was built from 1555–61 on orders from Ivan the Terrible and commemorates the capture of Kazan and Astrakhan. It has been the hub of the city s growth since the 14th century and was the city s tallest building until the completion of the Ivan the Great Bell Tower in 1600.']]
+
+    }
+},
+{
+	type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [ 28.04, -26.1]},
+    "properties": {
+        'title': 'Johannesburg',
+		'marker-color':'#FF0000',
+        'images': [['Johannesburg/Johannesburg_Sunrise,_City_of_Gold.jpg','The city is often described as Africas economic powerhouse, and contentiously as a modern and prosperous African city.']]
+
+    }
+}];
+
+// Add custom popup html to each marker
+myLayer.on('layeradd', function(e) {
+    var marker = e.layer;
+    var feature = marker.feature;
+    var images = feature.properties.images
+    var slideshowContent = '';
+
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img[0] + '" />' +
+                              '<div class="caption">' + img[1] + '</div>' +
+                            '</div>';
+    }
+
+    // Create custom popup content
+    var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
+                            '<h2>' + feature.properties.title + '</h2>' +
+                            '<div class="slideshow">' +
+                                slideshowContent +
+                            '</div>' +
+                            '<div class="cycle">' +
+                                '<a href="#" class="prev">Previous</a>' +
+                                '<a href="#" class="next">Next </a>' +
+                            '</div>'
+                        '</div>';
+
+    // http://leafletjs.com/reference.html#popup
+    marker.bindPopup(popupContent,{
+        closeButton: false,
+        minWidth: 320
+    });
+});
+
+// Add features to the map
+myLayer.setGeoJSON(geoJson);
+
+// This example uses jQuery to make selecting items in the slideshow easier.
+// Download it from http://jquery.com
+$('#map').on('click', '.popup .cycle a', function() {
+    var $slideshow = $('.slideshow'),
+        $newSlide;
+
+    if ($(this).hasClass('prev')) {
+        $newSlide = $slideshow.find('.active').prev();
+        if ($newSlide.index() < 0) {
+            $newSlide = $('.image').last();
+        }
+    } else {
+        $newSlide = $slideshow.find('.active').next();
+        if ($newSlide.index() < 0) {
+            $newSlide = $('.image').first();
+        }
+    }
+
+    $slideshow.find('.active').removeClass('active').hide();
+    $newSlide.addClass('active').show();
+    return false;
+});
+
+
+</script>
+
+</body>
+</html>

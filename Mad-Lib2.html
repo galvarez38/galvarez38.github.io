@@ -5,38 +5,27 @@
 <title>My Mad Lib</title>
 <style>
 body{
-	background:url(Los-Angeles.jpg);
+	background:url(Los_Angeles.jpg);
+	background-position:center;
 }
 h1{
-	color:rgb(255,0,255);
-	font:"Comic Sans MS";
-	text-shadow:2px 2px 2px #000066;
+	color:white;
 }
-	
 #content{
-	background-color:rgba(255,204,102,.45);
-	width:450px;
-	padding:5px;
-	font:Georgia, "Times New Roman", Times, serif;
+	background-color:rgba(255,204,153,.45);
+	color:black;
+	width:500px;
 	border-radius:25px;
-	box-shadow:2px 2px 2px #000000;
-	}
+	padding:5px;
+}
 </style>
+	
 </head>
 
 <body>
 <h1>Los Angeles</h1>
 <div id="content">
-<script>
 
-
-    //log out each response from the user. to make the output more readable, we'll add a string before each variable
-document.getElementById('adj').innerHTML  = prompt('Enter an adj');
-document.getElementById('date').innerHTML  = prompt('Enter a date');
-document.getElementById('city').innerHTML  = prompt('Enter a city');
-document.getElementById('event1').innerHTML = prompt('Enter an Event');
-
-</script>
 <p>Los Angeles is the second-largest city in the United States, the most <span id="adj">[adj]</span> city in the U.S. state of California, and the county seat of Los Angeles County. Situated in Southern California, Los Angeles is known for its mediterranean climate, ethnic diversity, sprawling metropolis, and as a major center of the American entertainment industry. Los Angeles lies in a large coastal basin surrounded on three sides by mountains reaching up to and over 10,000 feet (3,000 m).</p>
 
 <p>Historically home to the Chumash and Tongva, Los Angeles was claimed by Juan Rodríguez Cabrillo for Spain in 1542 along with the rest of what would become Alta California. The city was officially founded on <span id="date">[date]</span>, by Spanish governor Felipe de Neve. It became a part of Mexico in 1821 following the Mexican War of Independence. In 1848, at the end of the Mexican–American War, Los Angeles and the rest of California were purchased as part of the Treaty of Guadalupe Hidalgo, thereby becoming part of the United States. Los Angeles was incorporated as a municipality on April 4, 1850, five months before California achieved statehood.</p>
@@ -45,5 +34,20 @@ document.getElementById('event1').innerHTML = prompt('Enter an Event');
 
 <p>Nicknamed the City of Angels, <span id="city">[city]</span> is a global city with a diverse economy in entertainment, culture, media, fashion, science, sports, technology, education, medicine and research. It has been ranked sixth in the Global Cities Index and 9th Global Economic Power Index. The city is home to renowned institutions covering a broad range of professional and cultural fields and is one of the most substantial economic engines within the United States. The Los Angeles combined statistical area (CSA) has a gross metropolitan product (GMP) of $831 billion (as of 2008), making it the third-largest in the world, after the Greater Tokyo and New York metropolitan areas. Los Angeles includes Hollywood and leads the world in the creation of television productions, video games, and recorded music; it is also one of the leaders in motion picture production. Additionally, Los Angeles hosted the Summer Olympic Games in 1932, 1984, and is currently bidding for the 2024 <span id="event1">[event1]</span>.
 </p></div>
+<script>
+
+    // store each prompt response in a variable.
+    var adj = prompt("Enter a adj");
+    var date = prompt("Enter a date");
+    var city  = prompt("Enter a city");
+    var event1 = prompt("Enter a event1");
+
+    //log out each response from the user. to make the output more readable, we'll add a string before each variable
+    document.getElementById('adj').innerHTML=adj;
+    document.getElementById('date').innerHTML=date;
+    document.getElementById('city').innerHTML=city;
+    document.getElementById('event1').innerHTML=event1;
+
+</script>
 </body>
 </html>

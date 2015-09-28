@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Magic 8 Ball</title>
+<style>
+body{
+	background:url(crystal_ball.jpg);
+}
+h1{
+	color:white;
+	text-align:center;
+	font-size:5em;
+}
+#eight-ball{
+    width:500px;
+    margin:0 auto;
+    text-align: center;
+}
+button{
+	background-color:#666;
+	border:thin #FFF;
+	border-radius:5px;
+	color:white;
+	margin-left:-50px;
+	margin-top:100px;
+}
+img{
+	margin-top:-20px;
+}
+p{
+	color:white;
+	font:18px, Verdana, Geneva, sans-serif;
+}
+</style>
+</head>
+
+<body>
+<h1>Magic 8-Ball</h1>
+    <div id="eight-ball">
+        <button onclick="shake()">Shake</button>
+        <p id="question"></p>
+        <p id="answer"></p>
+    <div>
+<script>
+
+    // Called when we click the shake button 
+    function shake(){
+        // The question we asked
+        var question = prompt("Ask me a question");
+        var questionText = document.getElementById('question');
+        questionText.innerHTML = question;
+
+        // Number of possible answers  
+        var numberOfAnswers = 2;
+
+        // Answers the 8 Ball can return
+     	var answers= ["yes","no"];
+
+        // Answer returned by our 8 Ball
+        var chosenAnswer = getAnswerNumber(numberOfAnswers);        
+        displayAnswer(chosenAnswer);
+
+        // Returns a number based on the number of sides
+        function getAnswerNumber(answerCount){
+            var number = getRandomInt(0,answerCount);
+            return number;
+        }
+
+        // Returns a random integer between two numbers
+        function getRandomInt(min,max){
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        // Show our answer in the document 
+        function displayAnswer(answer) {
+
+            // Access the DOM element we want to to change
+            var fortuneText = document.getElementById('answer');
+			
+            if ( answer == 0 ) {
+                fortuneText.innerHTML = answers[0];
+            }
+            else if(answer == 0) {
+            	fortuneText.innerHTML = answers[1];
+            
+        }
+
+    }
+</script>
+</body>
+
+</html>

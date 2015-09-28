@@ -36,7 +36,7 @@ p{
 </head>
 
 <body>
-<h1>Tell me your fortune!</h1>
+<h1>Magic 8-Ball</h1>
     <div id="eight-ball">
         <button onclick="shake()">Shake</button>
         <p id="question"></p>
@@ -52,10 +52,10 @@ p{
         questionText.innerHTML = question;
 
         // Number of possible answers  
-        var numberOfAnswers = 5;
+        var numberOfAnswers = 2;
 
         // Answers the 8 Ball can return
-     	var answers= ["yes","no","maybe","most likely","someday"];
+     	var answers= ["yes","no"];
 
         // Answer returned by our 8 Ball
         var chosenAnswer = getAnswerNumber(numberOfAnswers);        
@@ -78,9 +78,9 @@ p{
             // Access the DOM element we want to to change
             var fortuneText = document.getElementById('answer');
 			
-            
-            	fortuneText.innerHTML = answers[answer];
-		
+            if ( answer == 0 ) {
+            	fortuneText.innerHTML = answers[0];
+			}
             
         }
 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Mad Lib</title>
+<style>
+body{
+	background:url(Los_Angeles.jpg);
+	background-position:center;
+}
+#content{
+	margin-left:150px;
+	background-color:rgba(0,153,204,.35);
+	width:400px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	color:white;
+	border-radius:25px;
+	padding:10px;
+	box-shadow:2px 2px 2px black;
+}
+h1{
+	color:white;
+	font:"Comic Sans MS";
+	font-size:3em;
+}
+	
+	
+</style>
+</head>
+
+<body>
+<h1>Los Angeles</h1>
+<div id="content">
+<p>Los Angeles officially the City of Los Angeles and often known by its initials L.A., 
+is the second-largest city in the <span id="country">[country]</span>, the most populous city in the U.S. state of 
+<span id="state">[state]</span>, and the county seat of Los Angeles County. Situated in Southern California, 
+Los Angeles is known for its mediterranean climate, ethnic diversity, sprawling metropolis, 
+and as a major center of the American entertainment industry. Los Angeles lies in a large coastal basin 
+surrounded on three sides by mountains reaching up to and over 10,000 feet (3,000 m).</p>
+
+<p>Historically home to the Chumash and Tongva, Los Angeles was claimed by Juan Rodríguez Cabrillo for Spain in 1542 along with the rest of 
+what would become Alta California. The city was officially founded on September 4, 1781, by Spanish governor Felipe de Neve. It became a part of 
+Mexico in 1821 <span id="verb">[verb]</span>, the Mexican War of Independence. In 1848, at the end of <span id="war">[war]</span>, Los Angeles and the rest of California 
+were purchased as part of the Treaty of Guadalupe Hidalgo, thereby becoming part of the United States. Los Angeles was incorporated as a municipality 
+on April 4, 1850, five months before California achieved statehood.</p>
+
+<p>The city is the focal point of the larger Los Angeles metropolitan area and the Greater Los Angeles Area region, which contain 13 million[15] and over 
+<span id="number">[number]</span>, respectively, as of 2010, making it one of the most populous metropolitan areas in the world as well as the second-largest 
+in the United States. Los Angeles is the seat of Los Angeles County, the most populated county in the United States. The city's inhabitants are referred to as 
+Angelenos.</p>
+
+<p>Nicknamed the City of Angels, Los Angeles is a global city with a diverse economy in entertainment, culture, media, fashion, science, sports, technology, 
+education, medicine and research. It has been ranked sixth in the Global Cities Index and 9th Global Economic Power Index. The city is home to renowned institutions 
+covering a broad range of professional and cultural fields and is one of the most substantial economic engines within the United States. The Los Angeles combined 
+statistical area (CSA) has a gross metropolitan product (GMP) of $831 billion (as of 2008), making it the third-largest in the world, after the Greater Tokyo and 
+New York metropolitan areas. Los Angeles includes Hollywood and leads the world in the creation of television productions, video games, and recorded music; it 
+is also one of the leaders in motion picture production. Additionally, Los Angeles hosted the Summer Olympic Games in 1932, 1984, and is currently bidding for 
+<span id="primeevent">[primeevent]</span>.<p></p></p></div>
+<script>
+ var country = prompt("Enter a country");
+    var state = prompt("Enter a state");
+    var verb  = prompt("Enter a verb");
+    var war = prompt("Enter a war");
+    var number = prompt("Enter a number");
+    var number = prompt("Enter a primeevent");
+
+    //log out each response from the user. to make the output more readable, we'll add a string before each variable
+    document.getElementById('country').innerHTML = country;
+    document.getElementById('state').innerHTML = state;
+    document.getElementById('verb').innerHTML = verb;
+     document.getElementById('war').innerHTML = war;
+    document.getElementById('number').innerHTML = number;   
+     document.getElementById('primeevent').innerHTML = primeevent;
+</script>
+</body>
+</html>

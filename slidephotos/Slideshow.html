@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Slideshow</title>
+<style>
+body{
+	background:url(black-background-8%20copy.jpg) top no-repeat #000;
+}
+#slideshow{
+    width:600px;
+	height:400px;
+    margin: 150px auto;
+    text-align: center;
+	border:2em solid  #F2DA00;
+	border-bottom:2em solid  goldenrod;
+	border-top:2em solid goldenrod;
+}
+img{
+	width:600px;
+	height:400px;
+}
+#previous{
+	width:40px;
+	height:40px;
+}
+#next{
+	width:40px;
+	height:40px;
+}
+#currentCaption{
+	font:Georgia, "Times New Roman", Times, serif;
+	font-size:36px;
+	color:white;
+	margin-top:50px;
+}
+button{
+	background-color:transparent;
+	border:none;
+	margin-top:-10px;
+}
+#last{
+	float:left;
+	margin-left:-100px;
+	margin-top:-350px;
+}
+#right{
+	float:right;
+	margin-right:-100px;
+	margin-top:-350px;
+}
+</style>
+</head>
+
+<body>
+    <div id="slideshow">
+        <img id="currentPhoto" src="images/vacation.jpg"/>
+        <p id="currentCaption">Slideshow</p>
+        <button onclick="previous()" id="last"><img src="previous.png" id="previous"></button>
+        <button onclick="next()" id="right"><img src="next.png" id="next"></button>
+    </div>
+  <script>
+    var slideshow = {
+        directory: "images/",
+		 photos:["Africa.jpg","Alaska.jpg","Albuquerque.jpg","Athens.jpg","Atlanta.jpg","Bahamas.jpg","Berlin.jpg","Brazil.jpg","Chicago.jpg","China.jpg","Cuba.jpg","Egypt.jpg","Iceland.jpg","Istanbul.jpg","Las-Vegas.jpg","London.jpg","Los-Angeles.jpg","Machu-Picchu.jpg","Madrid.jpg","Montreal.jpg","New-Delhi.jpg","New-Orleans.jpg","New-York.jpg","Paris.jpg","Phoenix.jpg","Puerto-Rico.jpg","Rome2.jpg","Salt-Lake-City.jpg","San-Francisco.jpg","Seattle.jpg","Sydney.jpg","Venice.jpg"],
+        captions:["Africa","Alaska","Albuquerque","Athens","Atlanta","Bahamas","Berlin","Rio de Janiero", "Chicago","China","Havanna","Egypt","Iceland","Istanbul","Las Vegas","London","Los Angeles","Machu Picchu","Madrid","Montreal","New Delhi","New Orleans","New York","Paris","Phoenix","Puerto Rico", "Rome", "Salt Lake City", "San Francisco", "Seattle","Sydney","Venice"],
+        currentPhoto: 0,
+        getPrevious: function(){
+            if (this.currentPhoto == 0) 
+                this.currentPhoto = this.photos.length-1;
+            else
+                this.currentPhoto--;
+
+            var photo   = this.directory + this.photos[this.currentPhoto];
+            var caption = this.captions[this.currentPhoto];
+            return { "photo": photo, "caption": caption };
+        },
+        getNext: function(){
+            if (this.currentPhoto == this.photos.length-1) 
+                this.currentPhoto = 0;
+            else
+                this.currentPhoto++;
+
+            var photo   = this.directory + this.photos[this.currentPhoto];
+            var caption = this.captions[this.currentPhoto];
+            return { "photo": photo, "caption": caption };
+        }
+    };
+
+    function next(){
+        var image = slideshow.getNext();    
+        document.getElementById("currentPhoto").src = image.photo;
+        document.getElementById("currentCaption").innerHTML = image.caption;
+    }
+
+    function previous(){
+        var image = slideshow.getPrevious();
+        document.getElementById("currentPhoto").src = image.photo;
+        document.getElementById("currentCaption").innerHTML = image.caption;
+    }
+</script>
+</body>
+</html>

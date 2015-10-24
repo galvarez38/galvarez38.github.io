@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>css demo</title>
+  <style>
+  body{
+	  background:gray;
+  }
+  #wrapper{
+	  width:1000px;
+	  height:800px;
+	  border:solid, 2px, rgba(0,0,0,1);
+	  background:white;
+  }
+  #box {
+	color: black;
+	width: 1005px;
+	position: absolute;
+	height: 20px;
+	left: 10px;
+	top: 187px;
+  }
+  #box2 {
+	color: black;
+	height: 808px;
+	position: absolute;
+	top: 8px;
+	left: 70px;
+	width: 20px;
+  }
+  #box3{
+	color: black;
+	height: 806px;
+	position: absolute;
+	top: 8px;
+	left: 197px;
+	width: 20px;
+  }
+  #box4{
+	color: black;
+	height: 403px;
+	position: absolute;
+	top: 12px;
+	left: 448px;
+	width: 20px;
+  }
+  #box5{
+	color: black;
+	height: 507px;
+	position: absolute;
+	top: 11px;
+	left: 744px;
+	width: 20px;
+  }
+  #box6{
+	color: black;
+	height: 805px;
+	position: absolute;
+	top: 10px;
+	left: 853px;
+	width: 42px;
+  }
+  #box7{
+	color: black;
+	height: 20px;
+	position: absolute;
+	top: 404px;
+	left: 7px;
+	width: 889px;
+  }
+  #box8{
+	color: black;
+	height: 616px;
+	position: absolute;
+	top: 198px;
+	left: 594px;
+	width: 20px;
+  }
+  #box9{
+	color: black;
+	height: 24px;
+	position: absolute;
+	top: 506px;
+	left: 70px;
+	width: 944px;
+  }
+  #box10{
+	color: black;
+	height: 189px;
+	position: absolute;
+	top: 11px;
+	left: 91px;
+	width: 108px;
+  }
+  #box11{
+	color: black;
+	height: 196px;
+	position: absolute;
+	top: 9px;
+	left: 764px;
+	width: 103px;
+  }
+  #box12{
+	color: black;
+	height: 194px;
+	position: absolute;
+	top: 10px;
+	left: 221px;
+	width: 239px;
+  }
+  #box13{
+	color: black;
+	height: 186px;
+	position: absolute;
+	top: 10px;
+	left: 462px;
+	width: 300px;
+  }
+  #box14{
+	color: black;
+	height: 211px;
+	position: absolute;
+	top: 189px;
+	left: 598px;
+	width: 164px;
+  }
+  #box15{
+	color: black;
+	height: 215px;
+	position: absolute;
+	top: 200px;
+	left: 764px;
+	width: 117px;
+  }
+   #box16{
+	color: black;
+	height: 100px;
+	position: absolute;
+	top: 419px;
+	left: 762px;
+	width: 92px;
+  }
+  #box17{
+	color: black;
+	height: 97px;
+	position: absolute;
+	top: 418px;
+	left: 208px;
+	width: 393px;
+  }
+  #box18{
+	color: black;
+	height: 283px;
+	position: absolute;
+	top: 531px;
+	left: 84px;
+	width: 129px;
+  }
+  #box19{
+	color: black;
+	height: 290px;
+	position: absolute;
+	top: 523px;
+	left: 214px;
+	width: 389px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="wrapper">
+<div id="box10">Color me yellow</div>
+<div id="box11">Color me yellow</div>
+<div id="box12">Color me red</div>
+<div id="box13">Color me blue</div>
+<div id="box14">Color me red</div>
+<div id="box15">Color me blue</div>
+<div id="box16">Color me yellow</div>
+<div id="box17">Color me blue</div>
+<div id="box18">Color me red</div>
+<div id="box19">Color me yellow</div>
+<div id="box">Color me black</div>
+<div id="box2">Color me black</div>
+<div id="box3">Color me black</div>
+<div id="box4">Color me black</div>
+<div id="box5">Color me black</div> 
+<div id="box6">Color me black</div>
+<div id="box7">Color me black</div>
+<div id="box8">Color me black</div>
+<div id="box9">Color me black</div>
+</div>
+<script>
+$( "#box, #box2, #box3, #box4, #box5, #box6, #box7, #box8, #box9" ).one( "click", function() {
+  $( this ).css( {"background-color": "black","color":"rgba(0,0,0,0)" });
+});
+$( "#box10, #box11, #box16, #box19").one( "click", function() {
+  $( this ).css( {"background-color":"yellow","color":"yellow" });
+});
+$( "#box12, #box14, #box18").one( "click", function() {
+  $( this ).css( {"background-color":"red","color":"red" });
+});
+$( "#box13, #box15, #box17").one( "click", function() {
+  $( this ).css( {"background-color":"blue","color":"blue" });
+});
+</script>
+ 
+</body>
+</html>

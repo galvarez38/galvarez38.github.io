@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>J-Query-Revised</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<h1>Rome</h1>
+<div id="context">
+<div id ="first">
+<p><span id="city">Rome</span> is a city and special comune <span id="parenthesis">(named "Roma Capitale")</span> in <span id="country">Italy.</span>
+Rome is the capital of Italy and of the Lazio region. With 2.9 million residents in 1,285 km2 
+(496.1 sq mi), it is also the country's largest and most populated comune and fourth-most 
+populous city in the European Union by population within city limits. The Metropolitan 
+City of Rome has a population of 4.3 million residents. The city is located in the 
+central-western portion of the Italian Peninsula, within Lazio (Latium), along the 
+shores of Tiber river. Vatican City is an independent country within the city boundaries of 
+Rome, the only existing example of a country within a city: for this reason Rome has been 
+often defined as capital of two states.</p>
+</div>
+
+<div id="second">
+<p>Rome's history spans more than two and a half thousand years. While Roman mythology dates 
+the founding of Rome at only around 753 BC, the site has been inhabited for much longer, 
+making it one of the oldest continuously occupied sites in Europe. The city's early 
+population originated from a mix of Latins, Etruscans and Sabines. Eventually, the city 
+successively became the capital of the Roman Kingdom, the Roman Republic and the Roman Empire, 
+and is regarded as one of the birthplaces of <span id="civilization">Western civilization</span> and as the first ever metropolis.It is referred to as "Roma Aeterna" (The Eternal City) and "Caput Mundi" (Capital of the World), two 
+central notions in ancient Roman culture.</p></div>
+
+<div id="third"><p>After the fall of the Western Empire, which marked the beginning of the <span id="period">Middle Ages</span>, Rome slowly fell 
+under the political control of the Papacy, which had settled in the city since the 1st century AD, 
+until in the 8th century it became the capital of the Papal States, which lasted until 1870.</p></div>
+
+<div id="last">Beginning with the Renaissance, almost all the popes since Nicholas V (1422–55) pursued coherently along four hundred years an architectonic and urbanistic program aimed to make of the city the world's artistic and cultural center. Due to that, Rome became first one of the major centers of the Italian 
+Renaissance, and then the birthplace of both the Baroque style and Neoclassicism. Famous artists, 
+painters, sculptors and architects made Rome the center of their activity, creating masterpieces throughout 
+the city. In 1871 Rome became the capital of the Kingdom of Italy, and in 1946 that of the Italian Republic.</p>
+</div></div></div>
+<script>
+$("h1").on("mouseover", function(){
+	$(this).css({"font":"Georgia, 'Times New Roman', Times, serif","font-size":"4em","color":"rgba(255,255,255,1)"})});
+$( "#city" ).on( "mouseover", function() {
+  $( this ).css({"color": "red", "font-weight":"bold"});
+});
+$( "#country" ).on( "mouseover", function() {
+  $( this ).css({"color": "blue", "font-weight":"bold","text-decoration":"underline"});
+});
+$( "#parenthesis" ).on( "mouseover", function() {
+  $( this ).css({"color": "yellow", "font-weight":"bold"});
+});
+$( "#civilization" ).on( "mouseover", function() {
+  $( this ).css({"color": "green", "font-weight":"bold"});
+});
+$( "#period" ).on( "mouseover", function() {
+  $( this ).css({"color": "gold", "font-weight":"bold"});
+});
+$("#first, #second, #third, #last").css({"background-color":"rgba(255,204,102,.45)","padding":"5px","border-radius":"25px","width":"500px","margin-top":"30px"});
+$("#context").css({"background-color":"rgba(204,51,0,1)","width":"550px"});
+$("body").css("background","url(Rome6.jpg)");
+$("#wrapper").css({"background-color":"rgba(255,204,153,.50)","width":"550px"});
+</script>
+</body>
+</html>
+<style>

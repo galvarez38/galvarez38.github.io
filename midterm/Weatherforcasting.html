@@ -29,10 +29,7 @@ body{
 	box-shadow:7px 9px 10px black; 
 	
 }
-#content{
-	width:1000px;
-	height:200px;
-}
+
 #locations{
 	width:1000px;
 	height:350px;
@@ -83,7 +80,7 @@ button{
 <body>
 
 <section id="vertical">
-<div id="content">
+
 <ul id="locations">
 <div class="weather" id="New-York"><li>New York, NY</li></div>
 <div class="weather" id="Albuquerque"><li>Albuquerque, NM</li></div>
@@ -91,12 +88,14 @@ button{
 <div class="weather" id="Atlanta"><li>Atlanta, GA</li></div>
 <div class="weather" id="Baltimore"><li>Baltimore, MD</li></div>
 <div class="weather" id="Boston"><li>Boston, MA</li></div>
+<div class="weather" id="Calgary"><li>Calgary, ALB, CAN</li></div>
 <div class="weather" id="Charlotte"><li>Charlotte, NC</li></div>
 <div class="weather" id="Chicago"><li>Chicago, IL</li></div>
 <div class="weather" id="Cleveland"><li>Cleveland, OH</li></div>
 <div class="weather" id="Dallas"><li>Dallas, TX</li></div>
 <div class="weather" id="Denver"><li>Denver, CO</li></div>
 <div class="weather" id="Detroit"><li>Detroit, MI</li></div>
+<div class="weather" id="Edmonton"><li>Edmonton,ALB, CAN</li></div>
 <div class="weather" id="Hawaii"><li>Honolulu, HI</li></div>
 <div class="weather" id="Houston"><li>Houston ,TX</li></div>
 <div class="weather" id="Kansas-City"><li>Kansas City, MO</li></div>
@@ -123,6 +122,12 @@ button{
 <div class="weather" id="Tampa"><li>Tampa, FL</li></div>
 <div class="weather" id="Vancouver"><li>Vancouver, B.C., CAN</li></div>
 <div class="weather" id="Washington"><li>Washington, D.C.</li></div>
+<div class="weather" id="Winnipeg"><li>Winnipeg, Man, CAN</li></div>
+<div class="weather" id="Venezuela"><li>Johannesburg, RSA</li></div>
+<div class="weather" id="Puerto-Rico"><li>San Juan, PR</li></div>
+<div class="weather" id="Egypt"><li>Cairo, EGY</li></div>
+<div class="weather" id="Johannesburg"><li>Johannesburg, RSA</li></div>
+<div class="weather" id="St-Petersburg"><li>St. Petersburg, RUS</li></div>
 <div class="weather" id="London"><li>London, UK</li></div>
 <div class="weather" id="Paris"><li>Paris, FR</li></div>
 <div class="weather" id="Beijing"><li>Beijing, CHN</li></div>
@@ -136,9 +141,14 @@ button{
 <div class="weather" id="Moscow"><li>Moscow, RUS</li></div>
 <div class="weather" id="Jerusalem"><li>Jerusalem, ISR</li></div>
 <div class="weather" id="Jeddah"><li>Jeddah, SAU</li></div>
-<div class="weather" id="Johannesburg"><li>Johannesburg, RSA</li></div>
-<div class="weather" id="St-Petersburg"><li>St. Petersburg, RUS</li></div>
-</ul></div>
+<div class="weather" id="Bangkok"><li>Bangkok,THLND</li></div>
+<div class="weather" id="Mexico-City"><li>Mexico City, MEX</li></div>
+<div class="weather" id="Sydney"><li>Sydney, AUS</li></div>
+<div class="weather" id="Istanbul"><li>Istanbul, TUR</li></div>
+<div class="weather" id="Athens"><li>Athens, GRE</li></div>
+<div class="weather" id="New-Delhi"><li>New Delhi, IND</li></div>
+<div class="weather" id="Venice"><li>Venice, ITL</li></div>
+</ul>
 </section>
 <section id="demo-nav">
 <nav>
@@ -154,7 +164,7 @@ button{
 	var elementCounter = 0;
 	// Cache Scroll Positions for Each Chapter
 	$weather.each(function(i){
-		$weatherScroll[i] = Math.round($(this).offset().top - $('#vertical').offset().top) -1;
+		$weatherScroll[i] = Math.round($(this).offset().top - $('#vertical').offset().top) -10;
 	});
 	$weather.eq(0).addClass('li'); // Set First Chapter Active on Start
 
@@ -198,12 +208,12 @@ button{
 	 $(".first").click(function (){
                 $('#vertical').animate({
                     scrollTop: $("#New-York").offset().top
-                }, 2000);
+                }, 5000);
             });
 		$(".last").click(function (){
                 $('#vertical').animate({
                     scrollTop: $("#St-Petersburg").offset().top
-                }, 2000);
+                }, 5000);
             });
 	 $(document).ready(function () {
            $(".weather").weatherFeed({relativeTimeZone:true});

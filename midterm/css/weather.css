@@ -1,4 +1,4 @@
-﻿ .fullDay
+ .fullDay
 {
     /*border-radius: 15px;*/
     border: 1px solid #000;
@@ -80,6 +80,8 @@ ul
 ul li
 {
     display:inline-block;
+	margin-top:100px;
+	margin-bottom:100px;
 	position:relative;
 	}
 .weather{

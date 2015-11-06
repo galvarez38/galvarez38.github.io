@@ -8,6 +8,7 @@
 	}
 #Atlanta{
 	background:url(USA/Atlanta.jpg) center;
+	text-shadow:2px 2px 2px black;
 	}
 #Baltimore{
 	background:url(USA/Baltimore.jpg) center;
@@ -108,9 +109,11 @@
 	}
 #Seattle{
 	background:url(USA/Seattle.jpg) center;
+	text-shadow:2px 2px 2px black;
 	}
 #Tampa{
 	background:url(USA/Seattle.jpg) center;
+	text-shadow:2px 2px 2px black;
 	}
 #Toronto{
 	background:url(USA/toronto.png) center;
@@ -135,6 +138,7 @@
 }
 #Beijing{
 	background:url(INTNL/beijing.jpg) center;
+	text-shadow:2px 2px 2px black;
 }
 #Jerusalem{
 	background:url(INTNL/jerusalem.JPG) center;
@@ -172,3 +176,35 @@
 #Johannesburg{
 	background:url(INTNL/johannesburg.jpg) center;
 }
+#Edmonton{
+	background:url(INTNL/edmonton.jpg) center;
+}
+#Winnipeg{
+	background:url(INTNL/Winnipeg.jpg) center;
+	text-shadow:2px 2px 2px black;
+}
+#Calgary{
+	background:url(INTNL/calgary.jpg) center;
+}
+#Venice{
+	background:url(INTNL/venice.jpg) center;
+}
+#Venezuela{
+	background:url(INTNL/caracas.jpg) center;
+}
+#New-Delhi{
+	background:url(INTNL/new-delhi.jpg) center;
+}
+#Athens{
+	background:url(INTNL/athens.jpg) center;
+}
+#Puerto-Rico{
+	background:url(USA/San-Juan.jpg) center;
+}
+#Istanbul{
+	background:url(INTNL/istanbul.jpg) center;
+}
+#Bangkok{
+	background:url(INTNL/bangkok.jpg) center;
+}
+

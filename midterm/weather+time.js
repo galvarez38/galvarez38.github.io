@@ -80,6 +80,7 @@
 								timeByLocation["UTC"] = utc + (3600000 * +8);
 								timeByLocation["AWST"] = utc + (3600000 * +8);
 								timeByLocation["UTC"] = utc + (3600000 * +7);
+								timeByLocation["ICT"] = utc + (3600000 * +7);
 								timeByLocation["MST"] = utc + (3600000 * +6.5);
 								timeByLocation["UTC"] = utc + (3600000 * +6);
 								timeByLocation["NPT"] = utc + (3600000 * +5.75);

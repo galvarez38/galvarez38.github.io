@@ -1,4 +1,4 @@
- .fullDay
+.fullDay
 {
     /*border-radius: 15px;*/
     border: 1px solid #000;
@@ -12,8 +12,9 @@
 }
 .weatherSummary
 {
-    background-size:250px;
+    background-size:300px;
     background-repeat:no-repeat;
+	background-position:center left;
     
 }
 .today
@@ -85,5 +86,11 @@ ul li
 	position:relative;
 	}
 .weather{
+	width:1050px;
+	margin-top:50px;
 	color:white;
+	font-weight:lighter;
+	text-shadow:3px 3px 3px black;
+	background:#0CF;
+	float:left;
 }

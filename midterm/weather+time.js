@@ -63,6 +63,7 @@
 
                             if (options.relativeTimeZone) {
                                 var timeByLocation = new Object();
+								timeByLocation["ChST"] = utc + (3600000 * +10);
 								timeByLocation["CHADT"] = utc + (3600000 * +13.75);
 								timeByLocation["NZDT"] = utc + (3600000 * +13);
 								timeByLocation["CHAST"] = utc + (3600000 * +13);
@@ -75,6 +76,7 @@
 								timeByLocation["UTC"] = utc + (3600000 * +10);
 								timeByLocation["CST"] = utc + (3600000 * +9.5);
 								timeByLocation["AWDT"] = utc + (3600000 * +9);
+								timeByLocation["JST"] = utc + (3600000 * +9);
 								timeByLocation["UTC"] = utc + (3600000 * +9);
 								timeByLocation["WST"] = utc + (3600000 * +8);
 								timeByLocation["UTC"] = utc + (3600000 * +8);
@@ -195,18 +197,18 @@
 
                             var code = parseInt(data.query.results.channel.item.forecast[0].code);
                             if (code < 18 || code > 37 || code == 35)
-                                background = codeImgURL + "day(dark)_cloud.jpg";
+                                background = codeImgURL + "day_dark_cloud.jpg";
                             else if (code < 28) {
                                 if ((today.getHours() + dstOffset) > 20 || (today.getHours() + dstOffset) < 7)
-                                    background = codeImgURL + "night-clear.jpg";
+                                    background = codeImgURL + "night_cloud.jpg";
                                 else
-                                    background = codeImgURL + "day-clouds.jpg";
+                                    background = codeImgURL + "day_cloud.jpg";
                             }
                             else {
                                 if ((today.getHours() + dstOffset) > 20 || (today.getHours() + dstOffset) < 7)
-                                    background = codeImgURL + "night-clear.jpg";
+                                    background = codeImgURL + "night_cloud.jpg";
                                 else
-                                    background = codeImgURL + "clear-skies.jpg";
+                                    background = codeImgURL + "day_clear.jpg";
                             }
 			
 

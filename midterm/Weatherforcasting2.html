@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/ui-lightness/jquery-ui.css"/> 
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="jquery-scrollTo.js"></script>
+<script src="weather+time.js"></script>
+<link href="cities.css" rel="stylesheet" type="text/css"/>
+<link href="css/weather.css" rel="stylesheet" type="text/css"/>
+ <style type="text/css">
+body{
+	font-family:"Century Gothic";
+	background:url(images/texture_34_by_sirius_sdz-d1ihrrm.jpg);
+}
+
+#vertical{
+	position:relative;
+	top:100px;
+	overflow:auto;
+	height:500px;	 
+	width:1200px;
+	border: 4px solid #FFF;
+	border-radius:25px;
+	margin-right:10px;
+	background-color:black;
+	box-shadow:7px 9px 10px black; 
+	
+}
+
+#locations{
+	width:1000px;
+	height:350px;
+}
+button{
+	color:white;
+	background:black;
+}
+.last{
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	display: block;
+	position: absolute;
+	left: 1105px;
+	top: 498px;
+}
+.first{
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	display: block;
+	position: absolute;
+	left: 1103px;
+	top: 156px;
+}
+.prev{
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	display: block;
+	position: absolute;
+	left: 1106px;
+	top: 282px;
+}
+.next{
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	display: block;
+	position: absolute;
+	left: 1106px;
+	top: 381px;
+}
+ </style>
+</head>
+
+<body>
+
+<section id="vertical">
+
+<ul id="locations">
+<div class="weather" id="New-York"><li>New York, NY</li></div>
+<div class="weather" id="Albuquerque"><li>Albuquerque, NM</li></div>
+<div class="weather" id="Alaska"><li>Anchorage, AK</li></div>
+<div class="weather" id="Atlanta"><li>Atlanta, GA</li></div>
+<div class="weather" id="Baltimore"><li>Baltimore, MD</li></div>
+<div class="weather" id="Boston"><li>Boston, MA</li></div>
+<div class="weather" id="Calgary"><li>Calgary, ALB, CAN</li></div>
+<div class="weather" id="Charlotte"><li>Charlotte, NC</li></div>
+<div class="weather" id="Chicago"><li>Chicago, IL</li></div>
+<div class="weather" id="Cleveland"><li>Cleveland, OH</li></div>
+<div class="weather" id="Dallas"><li>Dallas, TX</li></div>
+<div class="weather" id="Denver"><li>Denver, CO</li></div>
+<div class="weather" id="Detroit"><li>Detroit, MI</li></div>
+<div class="weather" id="Edmonton"><li>Edmonton,ALB, CAN</li></div>
+<div class="weather" id="Hawaii"><li>Honolulu, HI</li></div>
+<div class="weather" id="Houston"><li>Houston ,TX</li></div>
+<div class="weather" id="Kansas-City"><li>Kansas City, MO</li></div>
+<div class="weather" id="Las-Vegas"><li>Las Vegas, NV</li></div>
+<div class="weather" id="Los-Angeles"><li>Los Angeles, CA</li></div>
+<div class="weather" id="Memphis"><li>Memphis, TN</li></div>
+<div class="weather" id="Miami"><li>Miami, FL</li></div>
+<div class="weather" id="Minneapolis"><li>Minneapolis, MN</li></div>
+<div class="weather" id="Montreal"><li>Montreal, Que, CAN</li></div>
+<div class="weather" id="Nashville"><li>Nashville,TN</li></div>
+<div class="weather" id="New-Orleans"><li>New Orleans, LA</li></div>
+<div class="weather" id="Oklahoma"><li>Oklahoma City, OK</li></div>
+<div class="weather" id="Philadelphia"><li>Philadelphia, PA</li></div>
+<div class="weather" id="Phoenix"><li>Phoenix, AZ</li></div>
+<div class="weather" id="Pittsburgh"><li>Pittsburgh,PA</li></div>
+<div class="weather" id="Portland"><li>Portland, OR</li></div>
+<div class="weather" id="Sacramento"><li>Sacramento, CA</li></div>
+<div class="weather" id="SaltLakeCity"><li>Salt Lake City, UT</li></div>
+<div class="weather" id="St-Louis"><li>St. Louis, MO</li></div>
+<div class="weather" id="San-Antonio"><li>San Antonio, TX</li></div>
+<div class="weather" id="San-Diego"><li>San Diego, CA</li></div>
+<div class="weather" id="San-Francisco"><li>San Francisco, CA</li></div>
+<div class="weather" id="Seattle"><li>Seattle, WA</li></div>
+<div class="weather" id="Tampa"><li>Tampa, FL</li></div>
+<div class="weather" id="Vancouver"><li>Vancouver, B.C., CAN</li></div>
+<div class="weather" id="Washington"><li>Washington, D.C.</li></div>
+<div class="weather" id="Winnipeg"><li>Winnipeg, Man, CAN</li></div>
+<div class="weather" id="Venezuela"><li>Johannesburg, RSA</li></div>
+<div class="weather" id="Puerto-Rico"><li>San Juan, PR</li></div>
+<div class="weather" id="Egypt"><li>Cairo, EGY</li></div>
+<div class="weather" id="Johannesburg"><li>Johannesburg, RSA</li></div>
+<div class="weather" id="St-Petersburg"><li>St. Petersburg, RUS</li></div>
+<div class="weather" id="London"><li>London, UK</li></div>
+<div class="weather" id="Paris"><li>Paris, FR</li></div>
+<div class="weather" id="Beijing"><li>Beijing, CHN</li></div>
+<div class="weather" id="Egypt"><li>Cairo, EGY</li></div>
+<div class="weather" id="Rio"><li>Rio de Janeiro, BRZ</li></div>
+<div class="weather" id="Madrid"><li>Madrid, SPN</li></div>
+<div class="weather" id="Zurich"><li>Zurich, SWTLD</li></div>
+<div class="weather" id="Rome"><li>Rome, ITL</li></div>
+<div class="weather" id="Hungary"><li>Budapest, HGY</li></div>
+<div class="weather" id="Stockholm"><li>Stockholm, SWDN</li></div>
+<div class="weather" id="Moscow"><li>Moscow, RUS</li></div>
+<div class="weather" id="Jerusalem"><li>Jerusalem, ISR</li></div>
+<div class="weather" id="Jeddah"><li>Jeddah, SAU</li></div>
+<div class="weather" id="Bangkok"><li>Bangkok,THLND</li></div>
+<div class="weather" id="Mexico-City"><li>Mexico City, MEX</li></div>
+<div class="weather" id="Sydney"><li>Sydney, AUS</li></div>
+<div class="weather" id="Istanbul"><li>Istanbul, TUR</li></div>
+<div class="weather" id="Athens"><li>Athens, GRE</li></div>
+<div class="weather" id="New-Delhi"><li>New Delhi, IND</li></div>
+<div class="weather" id="Venice"><li>Venice, ITL</li></div>
+<div class="weather" id="Shanghai"><li>Shanghai, CHN</li></div>
+<div class="weather" id="Tokyo"><li>Tokyo, JPN</li></div>
+<div class="weather" id="Mumbai"><li>Mumbai, IND</li></div>
+<div class="weather" id="Nigeria"><li>Lagos, NGR</li></div>
+</ul>
+</section>
+<section id="demo-nav">
+<nav>
+<button class="prev"> prev </button>
+<button class="next"> next </button>
+<button class="first"> first </button>
+<button class="last">last</button>
+</nav></section>
+<script type="text/javascript"> 
+// [start] Demo Code //
+	var $weather = $('#vertical').find('ul').children('.weather');
+	var $weatherScroll= new Array();
+	var elementCounter = 0;
+	// Cache Scroll Positions for Each Chapter
+	$weather.each(function(i){
+		$weatherScroll[i] = Math.round($(this).offset().top - $('#vertical').offset().top) -10;
+	});
+	$weather.eq(0).addClass('li'); // Set First Chapter Active on Start
+
+	// previous button click 
+	$('#demo-nav > nav > .prev').click(function(){
+		// decrement the counter
+		elementCounter--;
+		// select the previous div using the counter
+		$scrollToElement = $('#locations').children().get(elementCounter);
+		// scroll to that div
+		$('#vertical').scrollTo($scrollToElement);
+	});
+	// next button click 
+	$('#demo-nav > nav > .next').click(function(){
+		// increment the counter to know which div to select
+		elementCounter++; 
+		// select the next div
+		$scrollToElement = $('#locations').children().get(elementCounter);
+		// scroll to that div
+		$('#vertical').scrollTo($scrollToElement);
+		//var last = $weather.parent().find('.weather.li').removeClass('li').index();
+		//var next;
+		
+		// switch($(this).index()){
+		// 	case 1:	// Action - Next Chapter
+		// 		next = (last +1 == $weather.length) ? 0 : last + 1; // Loop around to first chapter
+		// 	break;
+		// 	case 2:	// Action - Last Chapter
+		// 		next = (last - 1 == $weather.length) ? 0 : last - 1; // Loop around to first chapter
+		// 	break;
+		// 	case 3:	// Action - First Chapter
+		// 		next = $weather.length - 1;
+		// 	break;
+		// 	case 4:	// Action - First Chapter
+		// 		next = 0;
+		// 	break;
+		// }
+		// $weather.eq(next).addClass('li'); // Set Next Chapter Active
+		// //$('#vertical').scrollTo($weatherScroll[next]);
+	});	
+	 $(".first").click(function (){
+                $('#vertical').animate({
+                    scrollTop: $("#New-York").offset().top
+                }, 5000);
+            });
+		$(".last").click(function (){
+                $('#vertical').animate({
+                    scrollTop: $("#Nigeria").offset().top
+                }, 5000);
+            });
+	 $(document).ready(function () {
+           $(".weather").weatherFeed({relativeTimeZone:true});
+	   });
+    </script>
+</body>
+</html>

@@ -13,18 +13,18 @@
  <style type="text/css">
 body{
 	font-family:"Century Gothic";
-	background:url(images/texture_34_by_sirius_sdz-d1ihrrm.jpg);
+	background:url(images/texture_34.jpg);
 }
 
 #vertical{
 	position:relative;
-	top:100px;
+	top:150px;
 	overflow:auto;
 	height:500px;	 
 	width:1200px;
 	border: 4px solid #FFF;
 	border-radius:25px;
-	margin-right:10px;
+	margin-left:100px;
 	background-color:black;
 	box-shadow:7px 9px 10px black; 
 	
@@ -44,8 +44,8 @@ button{
 	border-radius: 25px;
 	display: block;
 	position: absolute;
-	left: 1105px;
-	top: 498px;
+	left: 1214px;
+	top: 579px;
 }
 .first{
 	width: 50px;
@@ -53,8 +53,8 @@ button{
 	border-radius: 25px;
 	display: block;
 	position: absolute;
-	left: 1103px;
-	top: 156px;
+	left: 1212px;
+	top: 237px;
 }
 .prev{
 	width: 50px;
@@ -62,8 +62,8 @@ button{
 	border-radius: 25px;
 	display: block;
 	position: absolute;
-	left: 1106px;
-	top: 282px;
+	left: 1215px;
+	top: 363px;
 }
 .next{
 	width: 50px;
@@ -71,8 +71,8 @@ button{
 	border-radius: 25px;
 	display: block;
 	position: absolute;
-	left: 1106px;
-	top: 381px;
+	left: 1215px;
+	top: 462px;
 }
  </style>
 </head>
@@ -91,17 +91,21 @@ button{
 <div class="weather" id="Calgary"><li>Calgary, ALB, CAN</li></div>
 <div class="weather" id="Charlotte"><li>Charlotte, NC</li></div>
 <div class="weather" id="Chicago"><li>Chicago, IL</li></div>
+<div class="weather" id="Cincinnati"><li>Cincinnati, OH</li></div>
 <div class="weather" id="Cleveland"><li>Cleveland, OH</li></div>
+<div class="weather" id="Cuba"><li>Havana, Cub</li></div>
 <div class="weather" id="Dallas"><li>Dallas, TX</li></div>
 <div class="weather" id="Denver"><li>Denver, CO</li></div>
 <div class="weather" id="Detroit"><li>Detroit, MI</li></div>
 <div class="weather" id="Edmonton"><li>Edmonton,ALB, CAN</li></div>
 <div class="weather" id="Hawaii"><li>Honolulu, HI</li></div>
 <div class="weather" id="Houston"><li>Houston ,TX</li></div>
+<div class="weather" id="Jacksonville"><li>Jacksonville, FLH</li></div>
 <div class="weather" id="Kansas-City"><li>Kansas City, MO</li></div>
 <div class="weather" id="Las-Vegas"><li>Las Vegas, NV</li></div>
 <div class="weather" id="Los-Angeles"><li>Los Angeles, CA</li></div>
 <div class="weather" id="Memphis"><li>Memphis, TN</li></div>
+<div class="weather" id="Mexico-City"><li>Mexico City, MEX</li></div>
 <div class="weather" id="Miami"><li>Miami, FL</li></div>
 <div class="weather" id="Minneapolis"><li>Minneapolis, MN</li></div>
 <div class="weather" id="Montreal"><li>Montreal, Que, CAN</li></div>
@@ -112,6 +116,7 @@ button{
 <div class="weather" id="Phoenix"><li>Phoenix, AZ</li></div>
 <div class="weather" id="Pittsburgh"><li>Pittsburgh,PA</li></div>
 <div class="weather" id="Portland"><li>Portland, OR</li></div>
+<div class="weather" id="Puerto-Rico"><li>San Juan, PR</li></div>
 <div class="weather" id="Sacramento"><li>Sacramento, CA</li></div>
 <div class="weather" id="SaltLakeCity"><li>Salt Lake City, UT</li></div>
 <div class="weather" id="St-Louis"><li>St. Louis, MO</li></div>
@@ -120,11 +125,12 @@ button{
 <div class="weather" id="San-Francisco"><li>San Francisco, CA</li></div>
 <div class="weather" id="Seattle"><li>Seattle, WA</li></div>
 <div class="weather" id="Tampa"><li>Tampa, FL</li></div>
+<div class="weather" id="Toronto"><li>Toronto, Ont, Can</li></div>
 <div class="weather" id="Vancouver"><li>Vancouver, B.C., CAN</li></div>
 <div class="weather" id="Washington"><li>Washington, D.C.</li></div>
 <div class="weather" id="Winnipeg"><li>Winnipeg, Man, CAN</li></div>
 <div class="weather" id="Venezuela"><li>Johannesburg, RSA</li></div>
-<div class="weather" id="Puerto-Rico"><li>San Juan, PR</li></div>
+<div class="weather" id="Dubai"><li>Dubai, UAE</li></div>
 <div class="weather" id="Egypt"><li>Cairo, EGY</li></div>
 <div class="weather" id="Johannesburg"><li>Johannesburg, RSA</li></div>
 <div class="weather" id="St-Petersburg"><li>St. Petersburg, RUS</li></div>
@@ -142,12 +148,16 @@ button{
 <div class="weather" id="Jerusalem"><li>Jerusalem, ISR</li></div>
 <div class="weather" id="Jeddah"><li>Jeddah, SAU</li></div>
 <div class="weather" id="Bangkok"><li>Bangkok,THLND</li></div>
-<div class="weather" id="Mexico-City"><li>Mexico City, MEX</li></div>
 <div class="weather" id="Sydney"><li>Sydney, AUS</li></div>
 <div class="weather" id="Istanbul"><li>Istanbul, TUR</li></div>
 <div class="weather" id="Athens"><li>Athens, GRE</li></div>
 <div class="weather" id="New-Delhi"><li>New Delhi, IND</li></div>
 <div class="weather" id="Venice"><li>Venice, ITL</li></div>
+<div class="weather" id="Shanghai"><li>Shanghai, CHN</li></div>
+<div class="weather" id="Tokyo"><li>Tokyo, JPN</li></div>
+<div class="weather" id="Mumbai"><li>Mumbai, IND</li></div>
+<div class="weather" id="Nigeria"><li>Lagos, NGR</li></div>
+<div class="weather" id="Guam"><li>Hagåtña, Guam</li></div>
 </ul>
 </section>
 <section id="demo-nav">
@@ -212,7 +222,7 @@ button{
             });
 		$(".last").click(function (){
                 $('#vertical').animate({
-                    scrollTop: $("#St-Petersburg").offset().top
+                    scrollTop: $("#Guam").offset().top
                 }, 5000);
             });
 	 $(document).ready(function () {

@@ -685,6 +685,6 @@ var now;
           var city = $(this).attr('class');
           var tz = timezones[city];
           mytime.tz(tz);
-          $("h1").text((tz)+ "-" + mytime.format('MMMM Do YYYY, h:mm:ss a'));
+          $("h1").text((tz)+ "-" + mytime.format());
         });
     });

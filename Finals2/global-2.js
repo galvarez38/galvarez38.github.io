@@ -48,6 +48,7 @@ var now;
 		   "casablanca" :"Africa/Casablanca",
 			"kinshasa" :"Africa/Kinshasa",
 			 "johannesburg" :"Africa/Johannesburg",
+			"monrovia" : "Africa/Monrovia",
 		   "cairo" : "Africa/Cairo",
 		   "israel" : "Asia/Jerusalem",
 		   "istanbul" : "Europe/Istanbul",

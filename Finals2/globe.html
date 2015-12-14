@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="moment.min.js"></script>
+<script src="moment-timezone.min.js"></script>
+<script src="moment-timezone-with-data.min.js"></script>
+<script src="global-2.js"></script>
+<style>
+body{
+	background-image:url(patterns_paper_background_texture_18535_2048x1152.jpg);
+}
+/* CSS Document */
+button{
+	width: 15px;
+	height: 15px;
+	background: #F00;
+	border-radius: 7.5px;
+}
+button:hover{
+	background-color:#FF0;
+}
+img{
+	border:6px groove white;
+}
+h1{
+	width:900px;
+	height:30px;
+	padding-bottom:5px;
+	color:white;
+	background:#000;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	border:6px groove white;
+}</style>
+</head>
+
+<body>
+<h1></h1><div id="map">
+<button class="Honolulu" style="position: absolute; left: 91px; top: 395px;"></button>
+<button class="New-York" style="position: absolute; left: 392px; top: 311px;"></button>
+<button class="Chicago" style="position: absolute; left: 343px; top: 311px;"></button>
+<button class="Denver" style="position: absolute; left: 286px; top: 306px;"></button>
+<button class="Phoenix" style="position: absolute; left: 264px; top: 325px;"></button>
+<button class="Los-Angeles"  style="position: absolute; left: 232px; top: 324px;"></button>
+<button class="San-Diego" style="position: absolute; left: 234px; top: 341px;"></button>
+<button class="San-Francisco" style="position: absolute; left: 224px; top: 313px;"></button>
+<button class="Anchorage"  style="position: absolute; left: 128px; top: 196px;"></button>
+
+<button class="Seattle" style="position: absolute; left: 213px; top: 289px;"></button>
+<button class="Detroit" style="position: absolute; left: 367px; top: 304px;"></button>
+<button class="Montreal" style="position: absolute; left: 396px; top: 277px;"></button>
+<button class="San-Juan"  style="position: absolute; left: 424px; top: 413px;"></button>
+<button class="Mexico-City" style="position: absolute; left: 303px; top: 406px;"></button>
+<button class="Monterrey" style="position: absolute; left: 291px; top: 384px;"></button>
+<button class="lima" style="position: absolute; left: 379px; top: 517px;"></button>
+<button class="argentina" style="position: absolute; left: 472px; top: 631px;"></button>
+<button class="recife" style="position: absolute; left: 538px; top: 526px;"></button>
+<button class="venezuela" style="position: absolute; left: 408px; top: 460px;"></button>
+<button class="Rio-de-Janeiro" style="position: absolute; left: 510px; top: 600px;"></button>
+<button class="Halifax" style="position: absolute; left: 439px; top: 291px;"></button>
+<button class="St-Johns" style="position: absolute; left: 470px; top: 272px;"></button>
+<button class="South-Georgia" style="position: absolute; left: 580px; top: 688px;"></button>
+<button class="Santiago" style="position: absolute; left: 401px; top: 635px;"></button>
+<button class="greenland1" style="position: absolute; left: 480px; top: 176px;"></button>
+<button class="greenland2" style="position: absolute; left: 568px; top: 164px;"></button>
+<button class="iceland" style="position: absolute; left: 612px; top: 201px;"></button>
+<button class="london" style="position: absolute; left: 670px; top: 258px;"></button>
+<button class="ireland" style="position: absolute; left: 632px; top: 251px;"></button>
+<button class="madrid" style="position: absolute; left: 655px; top: 309px;"></button>
+<button class="lisbon" style="position: absolute; left: 638px; top: 302px;"></button>
+<button class="paris" style="position: absolute; left: 688px; top: 279px;"></button>
+<button class="rome" style="position: absolute; left: 719px; top: 300px;"></button>
+<button class="berlin" style="position: absolute; left: 717px; top: 266px;"></button>
+<button class="ws" style="position: absolute; left: 625px; top: 379px;"></button>
+<button class="athens" style="position: absolute; left: 751px; top: 316px;"></button>
+<button class="amsterdam" style="position: absolute; left: 694px; top: 255px;"></button>
+<button class="stockholm" style="position: absolute; left: 734px; top: 219px;"></button>
+<button class="helsinki" style="position: absolute; left: 756px; top: 205px;"></button>
+<button class="vienna" style="position: absolute; left: 759px; top: 266px;"></button>
+<button class="oslo" style="position: absolute; left: 704px; top: 224px;"></button>
+<button class="abidjan" style="position: absolute; left: 655px; top: 472px;"></button>
+<button class="monrovia" style="position: absolute; left: 634px; top: 471px;"></button>
+<button class= "casablanca" style="position: absolute; left: 655px; top: 342px;"></button>
+<button class= "kinshasa" style="position: absolute; left: 762px; top: 511px;"></button>
+<button class= "johannesburg" style="position: absolute; left: 755px; top: 642px;"></button>
+<button class= "cairo" style="position: absolute; left: 776px; top: 373px;"></button>
+<button class= "israel" style="position: absolute; left: 803px; top: 349px;"></button>
+<button class= "istanbul" style="position: absolute; left: 780px; top: 311px;"></button>
+<button class="moscow" style="position: absolute; left: 826px; top: 252px;"></button>
+<button class= "dubai" style="position: absolute; left: 876px; top: 384px;"></button>
+<button class= "iran" style="position: absolute; left: 875px; top: 333px;"></button>
+<button class= "kabul" style="position: absolute; left: 911px; top: 356px;"></button>
+<button class= "pakistan" style="position: absolute; left: 923px; top: 389px;"></button>
+<button class= "omsk" style="position: absolute; left: 964px; top: 284px;"></button>
+<button class= "india" style="position: absolute; left: 960px; top: 381px;"></button>
+<button class= "nepal" style="position: absolute; left: 988px; top: 378px;"></button>
+<button class="bangladesh" style="position: absolute; left: 1007px; top: 392px;"></button>
+<button class="myanmar" style="position: absolute; left: 1027px; top: 378px;"></button>
+<button class="thailand" style="position: absolute; left: 1042px; top: 433px;"></button>
+<button class="beijing" style="position: absolute; left: 1089px; top: 308px;"></button>
+<button class="hongkong" style="position: absolute; left: 1087px; top: 401px;"></button>
+<button class="seoul" style="position: absolute; left: 1146px; top: 335px;"></button>
+<button class="vietnam" style="position: absolute; left: 1072px; top: 449px;"></button>
+<button class="papua" style="position: absolute; left: 1190px; top: 514px;"></button>
+<button class="tokyo" style="position: absolute; left: 1204px; top: 303px;"></button>
+<button class="guam" style="position: absolute; left: 1211px; top: 436px;"></button>
+<button class="brisbane" style="position: absolute; left: 1236px; top: 628px;"></button>
+<button class="adelaide" style="position: absolute; left: 1182px; top: 643px;"></button>
+<button class="melbourne" style="position: absolute; left: 1202px; top: 673px;"></button>
+<button class="nz" style="position: absolute; left: 1315px; top: 682px;"></button>
+<button class="chatham" style="position: absolute; left: 1325px; top: 714px;"></button>
+<img src="map_blank_world_map.png" /></div>
+</body>
+</html>

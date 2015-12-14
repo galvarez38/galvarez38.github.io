@@ -1,0 +1,17 @@
+@charset "UTF-8";
+body{
+	background-image:url(patterns_paper_background_texture_18535_2048x1152.jpg);
+}
+/* CSS Document */
+button{
+	width: 15px;
+	height: 15px;
+	background: #F00;
+	border-radius: 7.5px;
+}
+button:hover{
+	background-color:#FF0;
+}
+img{
+	border:6px groove white;
+}

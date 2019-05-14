@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title> 
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="moment.min.js"></script>
+<script src="moment-timezone-with-data.min.js"></script>
+<style>
+#map{
+border:10px solid white;
+box-shadow:3px 5px 20px black;
+}
+.current-time {
+ display: block;
+ font-weight: bold;
+ text-align: center;
+ width: 200px;
+ padding: 10px;
+}
+.clockcontainer {
+  float: left;
+  margin: 5px;
+}
+</style>
+</head> 
+<body>
+  <div id="map" style="width: 1600px; height: 800px;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+      ['<div class="clockcontainer" title="America/New_York"><div class="current-time" title="New York"> time</div></div>', 40.712784, -74.005941, 4],
+      ['<div class="clockcontainer" title="Europe/London"><div class="current-time" title="London"> time</div></div>', 51.507351, -0.127758, 5],
+      ['<div class="clockcontainer" title="Asia/Jerusalem"><div class="current-time" title="Jerusalem"> time</div></div>', 31.768319, 35.213710, 3],
+      ['<div class="clockcontainer" title="Asia/Shanghai"><div class="current-time" title="Beijing"> time</div></div>', 39.904211, 116.407395, 2],
+      ['<div class="clockcontainer" title="America/Sao_Paulo"><div class="current-time" title="Rio de Janeiro"> time</div></div>', -22.906847, -43.172896, 1],
+	  ['<div class="clockcontainer" title="Africa/Johannesburg"><div class="current-time" title="Johannesburg"> time</div></div>', -26.204103, 28.047305, 6],
+	  ['<div class="clockcontainer" title="Europe/Paris"><div class="current-time" title="Paris"> time</div></div>', 48.856614, 2.352222, 6],
+	  ['<div class="clockcontainer" title="Europe/Rome"><div class="current-time" title="Rome"> time</div></div>', 41.902783, 12.496366, 5],
+	  ['<div class="clockcontainer" title="Africa/Cairo"><div class="current-time" title="Cairo"> time</div></div>', 30.044420, 31.235712, 3],
+	  ['<div class="clockcontainer" title="Australia/Sydney"><div class="current-time" title="Sydney"> time</div></div>', -33.868820, 151.209296, 5],
+	  ['<div class="clockcontainer" title="Asia/Tokyo"><div class="current-time" title="Tokyo"> time</div></div>', 35.689487, 139.691706, 3],
+	  ['<div class="clockcontainer" title="America/Phoenix"><div class="current-time" title="Phoenix"> time</div></div>', 33.448377, -112.074037, 7],
+	  ['<div class="clockcontainer" title="Atlantic/Reykjavic"><div class="current-time" title="Reykjavic"> time</div></div>', 64.126521, -21.817439, 5],
+	  ['<div class="clockcontainer" title="Europe/Madrid"><div class="current-time" title="Madrid"> time</div></div>', 40.416775, -3.703790, 3],
+	  ['<div class="clockcontainer" title="Asia/Riyadh"><div class="current-time" title="Jeddah"> time</div></div>', 21.285407, 39.237551, 4],
+	  ['<div class="clockcontainer" title="Asia/Dubai"><div class="current-time" title="Dubai"> time</div></div>', 25.204849, 55.270783, 5],
+	  ['<div class="clockcontainer" title="Asia/Kolkata"><div class="current-time" title="New Delhi"> time</div></div>', 28.613939, 77.209021, 4],
+	  ['<div class="clockcontainer" title="Asia/Kathmandu"><div class="current-time" title="Kathmandu"> time</div></div>', 27.717245, 85.323960, 5],
+	  ['<div class="clockcontainer" title="Europe/Moscow"><div class="current-time" title="Moscow"> time</div></div>', 55.755826, 37.617300, 3],
+	  ['<div class="clockcontainer" title="Europe/Berlin"><div class="current-time" title="Berlin"> time</div></div>', 52.520007, 13.404954, 2],
+	  ['<div class="clockcontainer" title="Europe/Helsinki"><div class="current-time" title="Helsinki"> time</div></div>', 60.169856, 24.938379, 2],
+	  ['<div class="clockcontainer" title="Europe/Oslo"><div class="current-time" title="Oslo"> time</div></div>', 59.913869, 10.752245, 3],
+	  ['<div class="clockcontainer" title="Europe/Stockholm"><div class="current-time" title="Stockholm"> time</div></div>', 59.329323, 18.068581, 1],
+	  ['<div class="clockcontainer" title="America/Chicago"><div class="current-time" title="Chicago"> time</div></div>', 41.878114, -87.629798, 2],
+	  ['<div class="clockcontainer" title="America/Chicago"><div class="current-time" title="New Orleans"> time</div></div>',29.951066, -90.071532, 2],
+	  ['<div class="clockcontainer" title="America/Chicago"><div class="current-time" title="Dallas"> time</div></div>',32.776664,-96.796988, 2],
+	  ['<div class="clockcontainer" title="America/Miami"><div class="current-time" title="Miami"> time</div></div>', 25.761680, -80.191790, 1],
+	  ['<div class="clockcontainer" title="America/Anchorage"><div class="current-time" title="Anchorage"> time</div></div>', 61.218056, -149.900278, 3],
+	  ['<div class="clockcontainer" title="Pacific/Honolulu"><div class="current-time" title="Honolulu"> time</div></div>', 21.306944, -157.858333, 1],
+	  ['<div class="clockcontainer" title="America/Detroit"><div class="current-time" title="Detroit"> time</div></div>', 42.331427, -83.045754, 4],
+	  ['<div class="clockcontainer" title="America/Halifax"><div class="current-time" title="Halifax"> time</div></div>', 44.648862, -63.575320, 3],
+	  ['<div class="clockcontainer" title="America/Caracas"><div class="current-time" title="Caracas"> time</div></div>', 10.480594, -66.903606, 5],
+	  ['<div class="clockcontainer" title="America/Sao_Paulo"><div class="current-time" title="Rio de Janeiro"> time</div></div>', -22.906847, -43.172896, 2],
+	  ['<div class="clockcontainer" title="America/Lima"><div class="current-time" title="Lima"> time</div></div>', -12.272096, -76.271083, 1],
+	  ['<div class="clockcontainer" title="America/South_Georgia"><div class="current-time" title="King Edward Point"> time</div></div>', -54.283250, -36.493735, 1],
+	  ['<div class="clockcontainer" title="America/Bahia"><div class="current-time" title="Belo Horizonte"> time</div></div>', -19.924502, -43.935238, 2],
+	  ['<div class="clockcontainer" title="America/Argentina/Buenos_Aires"><div class="current-time" title="Buenos Aires"> time</div></div>', -34.603684,-58.381559, 1],
+	  ['<div class="clockcontainer" title="America/Santiago"><div class="current-time" title="Santiago"> time</div></div>', -33.448890, -70.669265, 1],
+	  ['<div class="clockcontainer" title="America/Fortaleza"><div class="current-time" title="Fortaleza"> time</div></div>', -3.731862, -38.526670, 1],
+	  ['<div class="clockcontainer" title="Africa/Kinshasa"><div class="current-time" title="Kinshasa"> time</div></div>', -4.441931, 15.266293, 2],
+	  ['<div class="clockcontainer" title="Atlantic/Azores"><div class="current-time" title="Ponta Delgada"> time</div></div>', 37.742830, -25.680587, 5],
+	  ['<div class="clockcontainer" title="America/Los_Angeles"><div class="current-time" title="Los Angeles"> time</div></div>', 34.052234, -118.243685, 1],
+	  ['<div class="clockcontainer" title="America/Denver"><div class="current-time" title="Denver"> time</div></div>', 39.739236, -104.990251, 1],
+	  ['<div class="clockcontainer" title="America/Los_Angeles"><div class="current-time" title="San Francisco"> time</div></div>', 37.774929, -122.419416, 2],
+	  ['<div class="clockcontainer" title="America/Los_Angeles"><div class="current-time" title="Seattle"> time</div></div>', 47.606209, -122.332071, 1],
+	  ['<div class="clockcontainer" title="America/Montreal"><div class="current-time" title="Montreal"> time</div></div>', 45.501689, -73.567256, 1],
+	  ['<div class="clockcontainer" title="Africa/Monrovia"><div class="current-time" title="Monrovia"> time</div></div>',6.290743,-10.760524, 2],
+	  ['<div class="clockcontainer" title="Africa/Nairobi"><div class="current-time" title="Nairobi"> time</div></div>',-1.292066,36.821946, 2],
+	  ['<div class="clockcontainer" title="Africa/Ndjamena"><div class="current-time" title="Ndjamena"> time</div></div>',12.134846, 15.055742, 2],
+	  ['<div class="clockcontainer" title="Africa/Algiers"><div class="current-time" title="Algiers"> time</div></div>',36.753768, 3.058756, 2],
+	  ['<div class="clockcontainer" title="Africa/Tunis"><div class="current-time" title="Tunis"> time</div></div>',36.806495, 10.181532, 2],
+	  ['<div class="clockcontainer" title="Asia/Dacca"><div class="current-time" title="Dhaka"> time</div></div>',23.810332, 90.412518, 2],
+	  ['<div class="clockcontainer" title="Asia/Rangoon"><div class="current-time" title="Yangon"> time</div></div>',16.866069, 96.195132, 2],
+	  ['<div class="clockcontainer" title="Asia/Tehran"><div class="current-time" title="Tehran"> time</div></div>',35.689197, 51.388974, 2],
+	  ['<div class="clockcontainer" title="Asia/Kabul"><div class="current-time" title="Kabul"> time</div></div>',34.555349, 69.207486, 2],
+	  ['<div class="clockcontainer" title="Asia/Bangkok"><div class="current-time" title="Bangkok"> time</div></div>',13.756331, 100.501765, 7],
+	  ['<div class="clockcontainer" title="Asia/Ho_Chi_Minh"><div class="current-time" title="Ho Chi Minh City"> time</div></div>',10.823099, 106.629664, 7],
+	  ['<div class="clockcontainer" title="Asia/Pyongyang"><div class="current-time" title="Pyongyang"> time</div></div>',39.039219, 125.762524, 5],
+	  ['<div class="clockcontainer" title="Asia/Jayapura"><div class="current-time" title="Jayapura"> time</div></div>',-2.591603, 140.669000, 6]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 3,
+      center: new google.maps.LatLng(0, 0),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+  
+  <script type="text/javascript">
+document.addEventListener('DOMContentLoaded', startTimer);
+function startTimer() {
+    setInterval(displayTime, 1000);
+    displayTime();
+} 
+
+function displayTime() {
+jQuery(".clockcontainer").each(function(){
+ var timezone = jQuery(this).attr("title");
+ var zonetitle = jQuery(this.firstElementChild).attr("title");
+ var now = moment().tz(timezone).format("h:mm:ss A");
+ var day = moment().tz(timezone).format("dddd MMMM DD, YYYY");
+
+ jQuery(this.firstElementChild).html(zonetitle + "<br/>" + day + "<br/>" + now);
+});
+}
+</script>
+</body>
+</html>

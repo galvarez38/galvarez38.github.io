@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather application</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+	body{
+		font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+		margin:0;
+		padding:0;
+		
+	}
+	
+	section{
+		text-align: center;
+    		background: rgba(255,255,255,.4);
+		background-image: linear-gradient(blue,teal,skyblue, white);
+		color:white;
+    		margin: 2em auto;
+    		padding: 1em;
+		
+	}
+	h1{
+	font-size:40px;
+	text-shadow:2px 2px 4px black;
+}
+	button{
+    background-color: #e2e2e2;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#e2e2e2),to(#bebebe));
+    background-image: -webkit-linear-gradient(top,#e2e2e2,#bebebe);
+    background-image: linear-gradient(top,#e2e2e2,#bebebe);
+    border: 1px solid #bdbdbd;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    color: #444;
+	}
+#getWeather{
+width:1400px;
+}
+	#currentWeather{
+		background-image: url(country/New-York.jpg);
+		width:1200px;
+		color:white;
+	}
+	footer{
+		clear:both;
+		padding:3px;
+		font-family:Arial, "Avenir Next LT W04 Demi", "Franklin Gothic Medium", "sans-serif";
+		
+	}
+</style>
+</head>
+<body>
+
+<section><h1>Weather application</h1></section>
+
+<input id="cityName" placeholder="Enter the City">
+<div id="error"></div>
+<button id="submitWeather">Enter</button>
+<div id="currentWeather"></div>
+<div id="getWeather"></div>
+<footer><p>&copy; copyright 2018</p></footer>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#submitWeather").click(function(){
+	$("#getWeather").html("");
+	
+
+		var cityName = $("#cityName").val();
+		var apiCall ='https://api.openweathermap.org/data/2.5/forecast/daily?q=' + cityName + "&code=XML" + "&cnt=16" +  "&units=imperial" +  "&cnt=16" + "&appid=a5cc61b57f762a8d771b084fe904863a";
+		var apiCall2 ='https://api.openweathermap.org/data/2.5/forecast?q=' + cityName +  "&units=imperial" +  "&cnt=40" + "&appid=a5cc61b57f762a8d771b084fe904863a";
+		var apiCall3 = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName +  "&units=imperial" +   "&appid=a5cc61b57f762a8d771b084fe904863a";
+		
+		
+		if(cityName!==""){
+			
+			$.ajax({
+				url: 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + "&units=imperial" + "&mode = html" + "&appid=a5cc61b57f762a8d771b084fe904863a",
+				type:"GET",
+				dataType: "jsonp",
+				success: function(data){	
+					var widget = currentWeather(data);
+					console.log(data);
+					
+					
+					$("#currentWeather").html(widget);
+					
+					$("#cityName").val("");
+					}
+				
+				
+			});
+			
+			$.getJSON(apiCall, forecastCallback);
+			$.getJSON(apiCall2, forecastCallback);
+			$.getJSON(apiCall3, forecastCallback);
+			
+			
+			function forecastCallback(forecastData){
+				for(let i = 0; i < forecastData.length; i++){
+				var data=forecastData;
+				var cityName = forecastData.city.name;
+				var country = forecastData.city.country;
+				var population =forecastData.city.population;
+				var temperature =forecastData.list[i].temp.day;
+				var morning =forecastData.list[i].temp.morn;
+				var evening =forecastData.list[i].temp.eve;
+				var night =forecastData.list[i].temp.night;
+				var low=forecastData.list[i].temp.min;
+				var high =forecastData.list[i].temp.max;
+				var weather =forecastData.list[i].weather[0].main;
+				var description =forecastData.list[i].weather[0].description;
+				var icon =forecastData.list[i].weather[0].icon;
+				var location =forecastData.city.coord.lat;
+				var location =forecastData.city.coord.lon;
+				var humidity =forecastData.list[i].humidity;
+				var windspeed =forecastData.list[i].speed;
+				var winddeg =forecastData.list[i].deg;
+				var update = forecastData.list[i].dt;
+				
+				
+}
+
+				
+				console.log(forecastData);
+				
+				$("#error").html("");
+				$("#cityName").html("");
+				
+
+			  for (var i=0; i<40; i++){
+				$("#getWeather").append( "<div><p>The Weather in:"  + "         " + forecastData.city.name + " ,  " + forecastData.city.country + "   " +"is:</p>" +
+									 "<p>Population:" + " " + forecastData.city.population + "</p>" +
+									"<img src="+ "image/" + forecastData.list[i].weather[0].icon + ".png style= 'width;100px'>" +
+									"<p>Temperature:" + "<strong> " + forecastData.list[i].temp.day + "&degF"+ "</strong></p>"+ 
+									"<p>Morning:" + "<strong> " + forecastData.list[i].temp.morn + "&degF"+ "</strong></p>"+ 
+									"<p>Evening:" + "<strong> " + forecastData.list[i].temp.eve + "&degF"+ "</strong></p>"+
+									"<p>Night:" + "<strong> " + forecastData.list[i].temp.night + "&degF"+ "</strong></p>"+
+									 "<p>Min. temp.:" +  "<strong> "+ forecastData.list[i].temp.min + "&degF"+ "</strong></p>"+ 
+									 "<p>Max. temp.:" +  "<strong> " + forecastData.list[i].temp.max + "&degF"+ "</strong></p>"+
+									 "<p>weather:" + "<strong>"+ forecastData.list[i].weather[0].main +  "</strong></p>"+
+									"<p>description:" + "<strong>"+ forecastData.list[i].weather[0].description +  "</strong></p>"+
+								 "<p>location:" + "<strong>"+  forecastData.city.coord.lat + "," + forecastData.city.coord.lon + "</strong></p>" +
+									"<p>humidity:" + "<strong>"+  forecastData.list[i].humidity+ "&#37;" + "</strong></p>" +
+									"<p>wind speed:" + "<strong>"+  forecastData.list[i].speed +  "</strong></p>"+
+									"<p>wind deg:" + "<strong>"+  forecastData.list[i].deg+ "&degF" + "</strong></p>"+
+									"<p>updates:" + "<strong>"+  forecastData.list[i].dt +   "</strong></p><div> "
+									   );
+				   $("#getWeather").css({"background-image": "url(image/night.JPG)",
+										 "margin-top": "20px",
+										"font-family":'Arial, "Avenir Next LT W04 Demi", "Franklin Gothic Medium", "sans-serif"',
+										 "color":"white",
+										 	"width":"1200px",
+											 "padding":"3px"});
+				   
+				   				$("div").css({"border-bottom":"2px solid white",
+											  "padding":"3px",
+											  "border-left":"2px solid white",
+											  "border-right":"2px solid white",
+											  "border-top":"2px solid white",
+											 "margin-left":"20px",
+											 "float":"left"});
+			  }
+			}
+		}else{
+			$("#error").html("The space cannot be empty!").css("color", "red");
+			$("#cityName").html("");
+		}
+	
+		
+});
+	
+});			
+
+	function currentWeather(data){
+		
+		
+			return 	"<h2> The weather in" + data.name + "," + data.sys.country + "</h2>" +
+			"<img src="+ "image/" + data.weather[0].icon + ".png style='width: 300px' >" +
+			"<p> Temperature <strong>"+ "" + data.main.temp + "&degF" + "</strong></p>" +
+			"<p> Low <strong>"+ "" + data.main.temp_min + "&degF" + "</strong></p>" +
+			"<p> High <strong>"+ "" + data.main.temp_max + "&degF" + "</strong></p>" +
+			"<p> Sunrise<strong>"+ "" + data.sys.sunrise + "</strong></p>" +
+			"<p> Sunset<strong>" + ""+ data.sys.sunset +  "</strong><p>" +
+			"<p> Weather<strong>" + ""+ data.weather[0].main  + "</strong></h2>" +
+			"<p> Description<strong>:"+ ""+ data.weather[0].description + "</strong></h2>" +	
+			"<p> Location<strong>" + data.coord.lat + "," + data.coord.lon + "</h2>" ;
+	
+	
+	}
+	 
+</script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<footer></footer>
+</body>
+</html>

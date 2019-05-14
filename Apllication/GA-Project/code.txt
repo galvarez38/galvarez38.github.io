@@ -1,0 +1,17 @@
+for(let i = 0; i < forecastData.list.length; i++){
+   var data = forecastData.list[i];
+
+				var cityName = forecastData.city.name;
+				var country = forecastData.city.country;
+				var population =forecastData.city.population;
+				var temperature =forecastData.list[i].main.temp;
+				var low=forecastData.list[i].main.temp_min;
+				var high =forecastData.list[i].main.temp_max;
+				var weather =forecastData.list[i].weather[0].main;
+				var weather =forecastData.list[i].weather[0].description;
+				var icon =forecastData.list[i].weather[0].icon;
+}
+
+forecastData.list.forEach(data => {
+var temperature = data.main.temp;
+});

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Full Weather App</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+	body{
+		margin:0;
+		padding:0;
+		
+	}
+	section{
+		background: linear-gradient(brown, sienna, beige);
+		padding:3px;
+		font-family:Arial, "Avenir Next LT W04 Demi", "Franklin Gothic Medium", "sans-serif";
+		text-shadow: 2px 2px black;
+		color:white;
+	}
+	
+	button{
+		background-color: brown;
+		color:white;
+	}
+	</style>
+</head>
+
+<body>
+<section><h1>Weather Forecast</h1></section>
+<input id="cityName" placeholder="Enter the City">
+<div id="error"></div>
+<button id="submitWeather">Enter City</button>
+	<div id="getWeather"></div>
+<div id="getForecast"></div>
+	
+	
+<script type="text/javascript">
+	
+	
+	
+$(document).ready(function(){
+	$("#submitWeather").click(function(){
+		var cityName = $("#cityName").val();
+		
+		if(cityName!==''){
+			
+			$.ajax({
+				url: 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + "&units=imperial" + "&mode = html" + "&appid=a5cc61b57f762a8d771b084fe904863a",
+				type:"GET",
+				dataType: "jsonp",
+				success: function(data){
+					
+					var widget = getWeather(data);
+					console.log(data);
+					
+					
+					$("#getWeather").html(widget);
+					
+					$("#cityName").val("");
+					}
+				
+				
+			});
+		}else{
+			$("#error").html('Field cannot be empty!, Please submit a city!');
+		}
+
+	});
+});
+	
+	function getWeather(data){
+		
+		
+		return 	"<h2> The weather in" + data.name + "," + data.sys.country + "</h2>" +
+			"<img src="+ "image/" + data.weather[0].icon + ".png style='width: 50px' >" +
+			"<p> Temperature <strong>"+ "" + data.main.temp + "&degF" + "</strong></p>" +
+			"<p> Low <strong>"+ "" + data.main.temp_min + "&degF" + "</strong></p>" +
+			"<p> High <strong>"+ "" + data.main.temp_max + "&degF" + "</strong></p>" +
+			"<p> Sunrise<strong>"+ "" + data.sys.sunrise + "</strong></p>" +
+			"<p> Sunset<strong>" + ""+ data.sys.sunset +  "</strong><p>" +
+			"<p> Weather<strong>" + ""+ data.weather[0].main  + "</strong></h2>" +
+			"<p> Description<strong>:"+ ""+ data.weather[0].description + "</strong></h2>" +	
+			"<p> Location<strong>" + data.coord.lat + "," + data.coord.lon + "</h2>" ;
+	
+	
+	}
+	
+</script>	
+
+	
+</body>
+</html>

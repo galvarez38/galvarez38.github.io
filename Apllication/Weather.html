@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+	body{
+		font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+		margin:0;
+		padding:0;
+		
+	}
+	section{
+		width:1480px;
+		text-align: center;
+    	background: rgba(255,255,255,.4);
+		background-image: linear-gradient(blue,teal,skyblue, white);
+		color:white;
+    	margin: 2em auto;
+    	padding: 1em;
+		height:150px;
+		
+	}
+	h1{
+	font-size:40px;
+	text-shadow:2px 2px 4px black;
+}
+	#getWeather{
+		width:1480px;
+		background-image:url(New-York.jpg);
+		margin-top:20px;
+		font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+		text-shadow: 2px 2px 2px black;
+		color:white;
+	}
+	#getForecast{
+		width:1480px;
+		font-size:12px;
+		clear:both;
+		font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+		color:white;
+		background-image: linear-gradient(blue,teal,skyblue,grey);
+	}
+	button{
+    background-color: #e2e2e2;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#e2e2e2),to(#bebebe));
+    background-image: -webkit-linear-gradient(top,#e2e2e2,#bebebe);
+    background-image: linear-gradient(top,#e2e2e2,#bebebe);
+    border: 1px solid #bdbdbd;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    color: #444;
+	}
+	</style>
+</head>
+
+<body>
+<section><h1>Weather application</h1></section>
+<input id="cityName" placeholder="Enter the City">
+<div id="error"></div>
+<button id="submitWeather">Enter City</button>
+	<div id="getWeather"></div>
+<div id="getForecast"></div>
+<div id="cityError"></div>
+
+<script type="text/javascript">
+	
+	
+$(document).ready(function(){
+	
+	$("#submitWeather").click(function(){
+	$("#getWeather").html("");
+	$("#getForecast").html("");
+	
+
+		var cityName = $("#cityName").val();
+		var apiCall = 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityName + "&units=imperial" + "&appid=a5cc61b57f762a8d771b084fe904863a";
+
+		
+		
+		
+		if(cityName!==""){
+			$.ajax({
+				url: 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + "&units=imperial" + "&mode = html" + "&appid=a5cc61b57f762a8d771b084fe904863a",
+				type:"GET",
+				dataType: "jsonp",
+				success: function(data){	
+					var widget = getWeather(data);
+					console.log(data);
+					
+					
+					$("#getWeather").html(widget);
+					
+					$("#cityName").val("");
+					}
+				
+				
+			});
+			
+			$.getJSON(apiCall, forecastCallback);
+			
+			function getWeather(data){
+		
+		
+			return 	"<h2> The weather in" + data.name + "," + data.sys.country + "</h2>" +
+			"<img src="+ "image/" + data.weather[0].icon + ".png style='width: 300px' >" +
+			"<p> Temperature <strong>"+ "" + data.main.temp + "&degF" + "</strong></p>" +
+			"<p> Low <strong>"+ "" + data.main.temp_min + "&degF" + "</strong></p>" +
+			"<p> High <strong>"+ "" + data.main.temp_max + "&degF" + "</strong></p>" +
+			"<p> Sunrise<strong>"+ "" + data.sys.sunrise + "</strong></p>" +
+			"<p> Sunset<strong>" + ""+ data.sys.sunset +  "</strong><p>" +
+			"<p> Weather<strong>" + ""+ data.weather[0].main  + "</strong></h2>" +
+			"<p> Description<strong>:"+ ""+ data.weather[0].description + "</strong></h2>" +	
+			"<p> Location<strong>" + data.coord.lat + "," + data.coord.lon + "</h2>" ;
+	
+	
+	}
+	
+			
+			function forecastCallback(forecastData){
+				for(let i = 0; i < forecastData.length; i++){
+					
+				var data=forecastData;
+				var cityName = forecastData.city.name;
+				var country = forecastData.city.country;
+				var population =forecastData.city.population;
+				var temperature =forecastData.list[i].main.temp;
+				var low=forecastData.list[i].main.temp_min;
+				var high =forecastData.list[i].main.temp_max;
+				var weather =forecastData.list[i].weather[0].main;
+				var description =forecastData.list[i].weather[0].description;
+				var icon =forecastData.list[i].weather[0].icon;
+				var location =forecastData.city.coord.lat;
+				var location =forecastData.city.coord.lon;
+				var humidity =forecastData.list[i].main.humidity;
+				var windspeed =forecastData.list[i].wind.speed;
+				var update = forecastData.list[i].dt_txt
+		
+}
+
+				
+				console.log(forecastData);
+				
+				$("#error").html("");
+				$("#cityName").html("");
+				$("#cityError").html("");
+
+			   for (var i=0; i<40; i++){
+				$("#getForecast").append( "<div><img src="+ "image/" + forecastData.list[i].weather[0].icon + ".png style= 'width;100px'>" +
+									   "<p>Temperature:" + "<strong> " + forecastData.list[i].main.temp + "&degF"+ "</strong></p>"+ 
+									 "<p>Min. temp.:" +  forecastData.list[i].main.temp_min + "&degF"+ "</p>"+ 
+									  "<p>Max. temp.:" +  forecastData.list[i].main.temp_max + "&degF"+ "</p>"+
+									  "<p>weather:" + "<strong>"+ forecastData.list[i].weather[0].main +  "</strong></p>"+
+									"<p>description:" + "<strong>"+ forecastData.list[i].weather[0].description +  "</strong></p>"+
+									"<p>humidity:" + "<strong>"+  forecastData.list[i].main.humidity+ "&#37;" + "</strong></p>" +
+									"<p>wind speed:" + "<strong>"+  forecastData.list[i].wind.speed +  "</strong></p>"+
+										"<p>updates:" + "<strong>"+  forecastData.list[i].dt_txt +  "</strong></p>/<div>"
+									   );
+				   $("div").css({'float':'left',
+								'margin-left':'5px',
+								'border-bottom':'2px solid black',
+								'border-top':'2px solid black',
+								'border-left':'2px solid grey',
+								'border-right':'2px solid grey',
+								 'text-shadow':'2px 2px 2px black'
+								});
+				    
+				  
+			   }
+			}
+		}else{
+			$("#error").html("The space cannot be empty!").css({'color':'red',
+															   'font-size':'50px'});
+			$("#cityError").html("");
+			$("#cityName").html("");
+		}
+			if(cityName!==""){
+				$("#cityError").html("This Is Not a City! Please enter a city");
+				$("#cityName").html("");
+				$("#error").html("");
+				
+			}
+		
+});
+	
+});			
+
+	
+		
+</script>
+</body>
+</html>

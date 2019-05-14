@@ -1,0 +1,118 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+background-image:url(images/background.jpg);
+background-repeat:repeat-x;
+}
+#header{
+	height:150px;
+	background-image:url(images/staten-island-ferry-address.jpg);
+	background-position: center;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: xx-large;
+	font-style: normal;
+	line-height: 2.5em;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #FFFFFF;
+	text-align:center;
+}
+#navigator{
+	background-color:blue;
+	color:white;
+	font-family: "Times New Romean", Times, serif;
+	font-size: 30px;
+	font-style: italic;
+	line-height: normal;
+	font-weight: bolder;
+	font-variant: normal;
+	text-transform: none;
+}
+#navigator li{
+display:inline;
+margin:10px;
+}
+#navigator li a:link{
+font:"Century Gothic";
+font-size:1.25em;
+color:blue;
+text-decoration:none;
+}
+#content{
+	margin-left:250px;
+	padding:5px;
+	width:520px;
+	background-color:white;
+	font:14px Arial, Helvetica, sans-serif;
+	left: auto;
+	top: auto;
+	right: auto;
+	bottom: auto;
+}
+#content .pictures{
+float:left;
+padding:20px;
+}
+#wrapper{
+PADDING-RIGHT: 10px;
+	PADDING-LEFT: 10px;
+	PADDING-BOTTOM: 10px;
+	MARGIN: 20px 0px 20px 0px;
+	COLOR: black;
+	PADDING-TOP: 10px;
+	BACKGROUND-COLOR: #fdf8f2;
+	width:1000px;
+}
+#sidebar{
+	PADDING-RIGHT: 0px;
+	BORDER-TOP: #b9d2e3 1px solid;
+	PADDING-LEFT: 0px;
+	FLOAT: left;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	BORDER-LEFT: #b9d2e3 1px solid;
+	COLOR: black;
+	PADDING-TOP: 0px;
+	BACKGROUND-COLOR: white;
+	top:0px;
+	left:0px;
+	width:200px;
+	
+}
+#sidebar li{
+	border-bottom: .5px solid black;
+	list-style-type:none;
+}
+#Site Search{
+color:black;
+}
+#sidebar h3{
+color:red;
+font-style:italic;
+}
+#searchform{
+background-color:#43688F;
+font:Arial,Helvetica,sans-serif;
+color:white;
+}
+#sidebar2{
+float:right;
+width:200px;
+top:0px;
+}
+#sidebar2 li{
+margin-top:10px;
+border-bottom:2px solid black;
+}
+#sidebar2 li a:link{
+font:"Century Gothic";
+font-size:1.25em;
+color:blue;
+text-decoration:none;
+}
+#sidebar2 li a:hover{
+background-color:blue;
+color:white;
+}

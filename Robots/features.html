@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style>
+
+.navmenu{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font: bold 10px 'Lato', sans-serif; /* use google custom font "Lato" */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.navmenu li{
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 100px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.navmenu li a{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px; /* height of links */
+  padding: 0 10px;
+  position: relative;
+  overflow: hidden;
+  color: black;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.1);
+  border-bottom: 8px solid rgba(0,0,0,.1);
+  opacity: 1;
+  text-transform: uppercase;
+  font-size: 1.8em;
+  /* 18 * 0.0555 = 1px */
+  letter-spacing: 0.0555em;
+  background: silver; /* default background color */
+  text-decoration: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; /* center text horizontally */
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; /* center text vertically */
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+/* Create shimmering effect */
+.navmenu li a:after{
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 100%;
+  background: white;
+  opacity: .5;
+  top: 0;
+  left: -50%;
+  -webkit-transform: skew(-20deg);
+          transform: skew(-20deg);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+	.navmenu li a:hover{
+		color:white; 
+	}
+.navmenu li:nth-of-type(2) a{
+  background: silver;
+}
+
+.navmenu li:nth-of-type(3) a{
+  background: silver;
+}
+
+.navmenu li:nth-of-type(4) a{
+  background: silver;
+}
+
+.navmenu li:nth-of-type(2) a:hover{
+	color:white;
+  background: silver;
+}
+.navmenu li:nth-of-type(3) a:hover{
+	color:white;
+  background: silver;
+}
+	
+.navmenu li:nth-of-type(4) a:hover{
+	color:white;
+  background: silver;
+}	
+.navmenu li a:hover{
+  opacity: .7;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.navmenu li a:hover:after{
+  left: 150%;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.navmenu li a:active{
+  box-shadow: 0 -30px 10px rgba(255,255,255,.2) inset;
+  border-bottom-width: 0;
+  box-shadow: none;
+  border-top: 8px solid rgba(0,0,0,.1);
+  -webkit-transition: none;
+  transition: none;
+}
+
+@media screen and (max-width:760px){
+  .navmenu li a{
+    font-size: 1.5em;
+  }
+  
+}
+section {
+    opacity: 1;
+    margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+    -webkit-transition: opacity 2s ease-in;
+    -moz-transition: opacity 2s ease-in;
+    -o-transition: opacity 2s ease-in;
+    -ms-transition: opacity 2s ease-in;
+    transition: opacity 2s ease-in;
+}
+	#eyes{
+		margin-top:100px;
+		font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+		align-items: center;
+	}
+	
+</style>
+
+</head>
+
+<body>
+<h1><img src="JD-logo.png" width="105" height="105"/></h1>
+<header>
+<ul class="navmenu">
+<li><a href="index.html">Home</a></li>
+<li><a href="About.html">About Me </a></li>
+<li><a href="Customer.html">Customer Review</a></li>
+<li><a href="features.html">Feature</a></li>
+	</ul>
+</header>
+<section><img src="ez-robot-jd-humanoid-robot.png" usemap="#Map">
+  <map name="Map">
+    <area shape="rect" coords="280,51,558,293" href="#eyes">
+  </map>
+</section>
+<section id="eyes">
+ <h2>Interactive and social</h2>
+  <img src="Robot.gif">
+  <p class="content">My eyes have 18 RGB LEDs (9 per eye), which can be configured to animate patterns with 1 million color combinations. A robot wouldn't be a robot without a camera for vision recognition. So, we installed our a camera in the head which can track and learn colors, objects, faces, motion, glyphs, and more.</p>
+</section>
+</body>
+</html>

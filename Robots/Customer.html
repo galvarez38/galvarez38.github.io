@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+.navmenu{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font: bold 10px 'Lato', sans-serif; /* use google custom font "Lato" */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.navmenu li{
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 100px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.navmenu li a{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px; /* height of links */
+  padding: 0 10px;
+  position: relative;
+  overflow: hidden;
+  color: black;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.1);
+  border-bottom: 8px solid rgba(0,0,0,.1);
+  opacity: 1;
+  text-transform: uppercase;
+  font-size: 1.8em;
+  /* 18 * 0.0555 = 1px */
+  letter-spacing: 0.0555em;
+  background: silver; /* default background color */
+  text-decoration: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; /* center text horizontally */
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; /* center text vertically */
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+/* Create shimmering effect */
+.navmenu li a:after{
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 100%;
+  background: white;
+  opacity: .5;
+  top: 0;
+  left: -50%;
+  -webkit-transform: skew(-20deg);
+          transform: skew(-20deg);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+	.navmenu li a:hover{
+		color:white; 
+	}
+.navmenu li:nth-of-type(2) a{
+  background: silver;
+}
+
+.navmenu li:nth-of-type(3) a{
+  background: silver;
+}
+
+.navmenu li:nth-of-type(4) a{
+  background: silver;
+}
+
+.navmenu li:nth-of-type(2) a:hover{
+	color:white;
+  background: silver;
+}
+.navmenu li:nth-of-type(3) a:hover{
+	color:white;
+  background: silver;
+}
+	
+.navmenu li:nth-of-type(4) a:hover{
+	color:white;
+  background: silver;
+}	
+.navmenu li a:hover{
+  opacity: .7;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.navmenu li a:hover:after{
+  left: 150%;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.navmenu li a:active{
+  box-shadow: 0 -30px 10px rgba(255,255,255,.2) inset;
+  border-bottom-width: 0;
+  box-shadow: none;
+  border-top: 8px solid rgba(0,0,0,.1);
+  -webkit-transition: none;
+  transition: none;
+}
+
+@media screen and (max-width:760px){
+  .navmenu li a{
+    font-size: 1.5em;
+  }
+
+@media screen and (max-width:760px){
+  .navmenu li a{
+    font-size: 1.5em;
+  }
+  
+}
+section {
+    opacity: 1;
+    margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+}
+section	h1{
+	background: silver;	
+    box-shadow: 0 -30px 10px rgba(255,255,255,.2) inset;
+	border: 1px solid rgba(0,0,0,.1);
+    border-bottom: 8px solid rgba(0,0,0,.1);
+	border-radius: 10px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	}
+	 .checked {
+    color: orange;
+}
+</style>
+
+</head>
+
+<body>
+<h1><img src="JD-logo.png" width="105" height="105"/></h1>
+<header>
+<ul class="navmenu">
+<li><a href="index.html">Home</a></li>
+<li><a href="About.html">About Me </a></li>
+<li><a href="Customer.html">Customer Review</a></li>
+<li><a href="features.html">Feature</a></li>
+	</ul>
+</header>
+<h1>Customer Review</h1>
+<div>
+<h2>Buy this</h2>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+<p>Regardless of whether voltage and current are alien concepts for you or you are a seasoned veteran, the people over at Ez-Robot have developed an opensource platform that is so rich you might mistake it for complicated. its not, you just have to sip it and slowly you'll see all the crazy things youll be able to do. Its so resource rich, with endless permutations possible and great resources and customer support from the growing community AND SOMETIMES THE CEO HIMSELF! DJ Sures is extremely engaging with his customers and often improves the platform directly from user suggestions and problems.</p>
+</div>
+<div>
+	<h2>Amazing Robot</h2>
+	<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<p>I recently purchased this JD Humanoid robot. The technology and ease of use with JD is beyond comparison with any product I have ever used or seen. The community is absolutely amazing and very supportive. The product is light years ahead of anything else.</p>
+</div>
+
+</body>
+</html>

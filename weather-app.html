@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <html lang="en"> 
+    <head>
+     <meta charset="utf-8"/>
+      <title>Weather</title>
+
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+    <div class="jumbotron" style="margin-bottom:0px; color:white; background-color: #4aa1f3;">
+        <h2 class="text-center" style="font-size:50px; font-weight:600;"> Get current weather</h2>
+
+    </div>
+
+        <div class="container">
+            <div class="row" style="margin-bottom:20px;">
+                <h3 class="text-center text-primary">Enter City Name</h3>
+                <span id="error"></span>
+
+            </div>
+            <div class="row form-group form-inline" id="rowDiv">
+                <input type="text" name="city" id="city" class="form-control" placeholder="City Name">
+                <button id="submitWeather" class="btn btn-primary">Search City</button>          
+            </div>
+            <div id="show">     </div>
+
+        </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+$(document).ready(function(){
+        $('#submitWeather').click(function(){
+            var city = $("#city").val();
+            if(city != ''){
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=imperial" + "&APPID=a5cc61b57f762a8d771b084fe904863a",
+                    type: "GET",
+                    dataType: "jsonp",
+                    success: function(data){
+                  // you gave the DIV that you want to display the weather information in "show", so that's where this is going:
+                    var html = "<h2>"+data.name+ ","  + data.sys.country + "</h2><br>";
+                    data.weather.forEach(function(city) {
+                        html += "\n"+"<p><img src='http://openweathermap.org/img/w/"+city.icon+".png'>"+city.description+"</p>" +
+							"<p>Temperature:" +"<strong>"+ data.main.temp + "&degF" + "</strong></p>" +
+							"<p>Minimum:" +"<strong>"+ data.main.temp_min  + "&degF" + "</strong></p>" +
+							"<p>Maximum:" +"<strong>"+ data.main.temp_max  + "&degF" + "</strong></p>" +
+							"<p>Sunrise:" +"<strong>"+ data.sys.sunrise  + "</strong></p>" +
+							"<p>Sunset:" +"<strong>"+ data.sys.sunset  + "</strong></p>" +
+							"<p>Location:" +"<strong>"+ data.coord.lat  + "," + data.coord.lon + "</strong></p>"
+                    });
+                    $("#show").html(html);                  
+                    }
+                });
+            } else {
+                $("#error").html('field cannot be empty');
+            }
+        });
+    });
+</script>
+        </body>
+    </html>

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	background-color: #000000;
+	background-image:url(Background%20image1.jpg);
+}
+#myself{
+	font: 20px "Century Gothic";
+	width: 700px;
+	color: #FFFFFF;
+}
+#footer{
+font:18px "Century Gothic";
+}
+#footer a{
+color:white;
+text-decoration:none;
+}
+#footer a:hover{
+text-decoration:underline;
+}

@@ -50,7 +50,7 @@ $(document).ready(function(){
 		if(cityName!==''){
 			
 			$.ajax({
-				url: 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + "&units=imperial" + "&mode = html" + "&appid=a5cc61b57f762a8d771b084fe904863a",
+				url: 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + "&units=imperial" + "&mode = html" + "&appid=a5cc61b57f762a8d771b084fe904863a",
 				type:"GET",
 				dataType: "jsonp",
 				success: function(data){

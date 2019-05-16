@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+margin:0;
+padding:0;
+}
+body{
+	background-color: #000000;
+	}
+#head{
+margin:75px 0 5px 0;
+
+}
+#head p{
+font-size:30px;
+font-weight:bold;
+line-height:.85em;
+}
+#head a{
+text-decoration:none;
+color:#222;
+}
+#head a:hover{
+text-decoration:blink;
+}
+a img{
+border:none;
+width:200px;
+height:200px;
+}
+#wrapper{
+width:1000px;
+height:1000px;
+}
+#content{
+width:990px;
+margin:auto;
+}
+#boxes{
+list-style:none;
+}
+#boxes li{
+	float:left;
+	display:block;
+	width:200px;
+	margin:3px;
+	padding:10px;
+	height:200px;
+}
+#boxes li a{
+	text-decoration:none;
+	color:#ddd;
+	font-size:1.3em;
+	font-family:"Century Gothic", Helvetica, Arial, sans-serif;
+}
+#boxes li a:hover{
+text-decoration:underline;
+}
+#boxes li .show{
+	display:block;
+	width:200px;
+	height:200px;
+
+}
+#boxes li .hide{
+	color:#fff;
+	text-align:center;
+	height:0;
+	background:#999999;
+	display:none;
+}
+#boxes li:hover .hide{
+	cursor:default;
+	height:200px;
+	width:200px;
+	display:block;
+	overflow:auto;
+}
+#boxes li:hover .show{
+height:0;
+display:none;
+}
+.web #enter{
+font: 14px Arial, Helvetica, sans-serif;
+color:white;
+}
+.web #enter a{
+text-decoration:none;
+}
+.web #enter a:hover{
+text-decoration:underline;
+}
+#clear{
+clear:both;
+}
+#footer{
+font:18px "Century Gothic";
+}
+#footer a{
+color:white;
+text-decoration:none;
+}
+#footer a:hover{
+text-decoration:underline;
+}
+.particles{
+float:left;
+margin:10px;
+}
+p {
+font:18px "Century Gotic";
+color:white;
+}
